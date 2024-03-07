@@ -8,6 +8,16 @@ import torchaudio
 import torch
 import numpy as np
 import time
+from scipy.stats import norm
+
+def reset_overlap(pred, overlap):
+    for idx in range(1, pred.size(0)):
+        tail = pred[idx - 1, -overlap:]
+        head = pred[idx, :overlap]
+        new_over_lap = torch.max(tail, head)
+        pred[idx - 1, -overlap:] = new_over_lap
+        pred[idx, :overlap] = new_over_lap
+
 
 def high_pass_filter(data, sampling_freq, cutoff_freq):
     b, a = signal.butter(4, cutoff_freq / (sampling_freq / 2), 'high')
@@ -195,6 +205,10 @@ def frame_cut(frame_length, label_list, win_duration, hop_duartion, bins_num):
     return labels
 
 def mask_cut(labels, win_duration, hop_duartion, bins_num):
+    p0 = 0.75
+    p1 = 0.25
+    weight_0 = 1 / p0
+    weight_1 = 1 / p1
     bin_duration = win_duration / bins_num
     hop_samples = hop_duartion / bin_duration
     over_lap = int(bins_num - hop_samples)
@@ -219,8 +233,9 @@ def mask_cut(labels, win_duration, hop_duartion, bins_num):
 
     # 打印结果
     # print("连续的1开始的索引到结束的索引:")
+    label_1d = [weight_0 for _ in label_1d]
     for start, end in zip(start_indexes, end_indexes):
-        label_1d = mask_normal(label_1d, start, end)
+        label_1d = mask_normal(label_1d, weight_1, start, end)
     masks = []
     start = 0
     for i in range(len(labels)):
@@ -228,15 +243,24 @@ def mask_cut(labels, win_duration, hop_duartion, bins_num):
         start += bins_num - over_lap
     return torch.Tensor(masks)
 
-def mask_normal(label, start_idx, end_idx):
-    data_size = end_idx - start_idx + 1  # 数据大小
-    # 生成一维正态分布的蒙版
+def generate_mask(data_size, std_factor=0.12):
+    # 生成一维正态分布的蒙版并反转
     x = np.linspace(-1, 1, data_size)
-    mask = np.exp(-x**2)
-    mask /= np.sum(mask)
-    # 将蒙版应用到区域数据上
-    label[start_idx:end_idx + 1] = mask
-    return label
+    mask = np.exp(-x**2 / (2 * std_factor**2))  # 调整标准差
+    mask = 1 - mask  # 反转正态分布
+    return mask
+
+def mask_normal(label, weight_1, start_idx, end_idx):
+    data_size = end_idx - start_idx + 1  # 数据大小
+    label_np = np.array(label)
+    label_np[start_idx:end_idx + 1] = weight_1
+
+    mask = generate_mask(data_size)
+
+    data = label_np[start_idx:end_idx + 1]
+    scaled_array = mask * (np.sum(data) / np.sum(mask))
+    label_np[start_idx:end_idx + 1] = scaled_array
+    return label_np.tolist()
 
 
 def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir):
@@ -256,7 +280,7 @@ def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
         subset_masks = stacked_masks[i: i + length]
         sample_dict = {'audio': subset_audio, 'imu': subset_imu, 'gas': subset_gas, 'labels': subset_labels, 'masks': subset_masks}
         # 保存字典到文件
-        output_file = f'model/data/{dump_dir}/sample_dict_{count}_{timestamp}.pt'
+        output_file = f'Aspirat/data/{dump_dir}/sample_dict_{timestamp}_{count}.pt'
         torch.save(sample_dict, output_file)
         print(f"Shape:{stacked_audio.shape[0]} i={i} Dump {count} file={output_file}")
         count += 1
@@ -275,7 +299,7 @@ def resample(signal, sr, target_sample_rate):
 
 
 def data_build(healty=False):
-    with open('model/config.json', 'r') as json_file:
+    with open('Aspirat/config.json', 'r') as json_file:
         config_dict = json.load(json_file)
     meta_csv = config_dict['patient_data_meta']
     dump_dir = config_dict['patient_data_dir']
@@ -341,11 +365,71 @@ def data_build(healty=False):
     dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
     print("Data Transform Finished!")
 
+def post_process(input_data):
+    data = input_data.tolist()
+    upper_limit = 0.55
+    lower_limit = 0.45
+    swallow = False
+    start_idx = 10
+    over_lap =  5
+    data_list = data[0][:10]
+    for line in range(1, len(data)):
+        for i in range(over_lap):
+            data_list.append((data[line][i] + data[line - 1][start_idx + i]) / 2)
+        for i in range(over_lap, start_idx):
+            data_list.append(data[line][i])
+    data_list.extend([value for value in data[-1][-5:]])
+    for i in range(len(data_list)):
+        if swallow:
+            if data_list[i] >= lower_limit:
+                data_list[i] = 1
+            else:
+                data_list[i] = 0
+                swallow = False
+        else:
+            if data_list[i] >= upper_limit:
+                data_list[i] = 1
+                swallow = True
+            else:
+                data_list[i] = 0
+    delete_short_event(data_list)
+    return rebuild_target(data_list)
+
+def rebuild_target(data_list):
+    window_size = 15
+    stride = 10
+    frames = []
+
+    # 提取窗口并将其转换为PyTorch张量
+    for i in range(0, len(data_list) - window_size + 1, stride):
+        window = data_list[i:i + window_size]
+        frames.append(window)
+
+    # 转换成PyTorch张量
+    return torch.tensor(frames)
+    
+def delete_short_event(data):
+    counts = 4
+    pre_type = 0
+    for i in range(len(data)):
+        if data[i] == pre_type:
+            counts += 1
+        else:
+            pre_type = data[i]
+            if counts <= 3:
+                for idx in range(counts):
+                    data[i - idx - 1] = pre_type
+            counts = 1
 
 if __name__ == "__main__":
-    data_build(healty=True)
+    data_build(healty=False)
     # process_folder("SegmentSwallow/healthy")
     # split_data('patient_meta.csv')
     # delete_files('SegmentSwallow', '.mp4')
     # delete_files('SegmentSwallow', 'denoise')
+    # data_tensor = torch.tensor([[0, 0.2, 0.3, 0, 0, 0, 0.4, 0.5, 0.4, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6],
+    #                             [0.5, 0.46, 0.3, 0, 0, 0, 0.4, 0.5, 0.4, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6],
+    #                             [0.5, 0.2, 0.3, 0, 0, 0.6, 0.46, 0.5, 0.5, 0.6, 0.6, 0.5, 0.4, 0.3, 0.45]])
+
+    # post_process(data_tensor)
     pass

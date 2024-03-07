@@ -2,7 +2,7 @@ import torch
 import torch.nn
 from torchaudio.transforms import FrequencyMasking, TimeMasking
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
-
+from data_util import post_process
 
 class Trainclass():
     def __init__(self,
@@ -60,25 +60,22 @@ class Trainclass():
             targets = targets.to(self.device)
             targets_weight = targets_weight.to(self.device)
             output = self.model(audio.to(self.device), imu.to(self.device), gas.to(self.device))
-
             # forward pass with mean teacher
             # with torch.no_grad():
             #     mean_t_output = self.mean_teacher(audio_masking, imu_masking, gas_sqen)
 
             # consistency loss
             # const_loss = self.loss_cons_fn(output, mean_t_output)
-            
             # set the consistency weight
-            # targets_weight = torch.zeros_like(targets)
-            # targets_weight = torch.fill_(targets_weight, 0.5)
-            # targets_weight[targets > 0.5] = 0.5
-            # targets_loss = self.loss_fn(output, targets)
-            # loss = torch.mean(targets_weight * targets_loss)
-            loss = self.loss_fn(output, targets)
+            # target_value = 4 / 3
+            # targets_weight[targets_weight != target_value] = 4
+            targets_loss = self.loss_fn(output, targets)
+            loss = torch.mean(targets_weight * targets_loss)
+            # loss = self.loss_fn(output, targets)
             loss.backward()
             self.optimizer.step()
+            # post_process
             total_loss.append(loss.item())
-
             # update mean teacher, (should choose alpha somehow)
             # Use the true average until the exponential average is more correct
             # alpha = 0.9
@@ -96,8 +93,8 @@ class Trainclass():
             for (audio, imu, gas, targets, _) in self.test_loader:
                 targets = targets.to(self.device)
                 output = self.model(audio.to(self.device), imu.to(self.device), gas.to(self.device))
-                pred = (output > 0.5).float()
-                loss = self.loss_fn(output, targets).item()
+                pred = post_process(output)
+                loss = torch.mean(self.loss_fn(output, targets)).item()
                 output_flattened = output.cpu().numpy().reshape(-1)
                 targets_flattened = targets.cpu().numpy().reshape(-1)
                 pred_flattend = pred.cpu().numpy().reshape(-1)

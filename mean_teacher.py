@@ -78,7 +78,8 @@ def main():
     )
 
     data = os.listdir(config_dict['train_dir'])
-    kf = KFold(n_splits=config_dict['Splits'], shuffle=True, random_state=args.seed)
+    kf = KFold(n_splits=config_dict['Splits'], shuffle=False, random_state=None)
+    # kf = KFold(n_splits=config_dict['Splits'], shuffle=True, random_state=args.seed)
     fold_avg_acc, fold_avg_sen, fold_avg_spe, fold_avg_auc = 0, 0, 0, 0
     for fold, (train_idx, val_idx) in enumerate(kf.split(data), 1):
         train_data = [data[i] for i in train_idx]
@@ -97,7 +98,6 @@ def main():
         train_loader = DataLoader(
             Aspiration_train_dataset,
             batch_size=args.batch_size,
-            shuffle=True,
             collate_fn=collate_fn,
             **kwargs
         )
@@ -111,11 +111,10 @@ def main():
 
         model = AttnSleep()
         # mean_teacher = AttnSleep()
-
         model = model.to(device)
         # mean_teacher = mean_teacher.to(device)
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
-        loss_fn = torch.nn.BCELoss()
+        loss_fn = torch.nn.BCELoss(reduction='none')
         # loss_fn = torch.nn.BCELoss(reduction='none')
         # loss_cons_fn = torch.nn.MSELoss()
         # scheduler = OneCycleLR(optimizer,

@@ -320,14 +320,19 @@ class AttnSleep(nn.Module):
         self.audio_tce = TCE(EncoderLayer(audio_model, deepcopy(audio_attn), deepcopy(audio_ff), reduced_channel, dropout), N)
         self.imu_tce = TCE(EncoderLayer(imu_model, deepcopy(imu_attn), deepcopy(imu_ff), reduced_channel, dropout), N)
         self.gas_tce = TCE(EncoderLayer(gas_model, deepcopy(gas_attn), deepcopy(gas_ff), reduced_channel, dropout), N)
-        self.channel_attn = SELayer(reduced_channel)
+        self.channel_attn = SELayer(reduced_channel * 3)
         self.relu = nn.ReLU()
-        att_channel = audio_model + imu_model + gas_model
-        x_attn = MultiHeadedAttention(h, att_channel, reduced_channel)
-        x_ff = PositionwiseFeedForward(att_channel, d_ff, dropout)
-        self.x_tce = TCE(EncoderLayer(att_channel, deepcopy(x_attn), deepcopy(x_ff), reduced_channel, dropout), N)
-        self.fc = nn.Linear(att_channel * reduced_channel, segment_length)
-        self.sigmod = nn.Sigmoid()
+        merge_channel = reduced_channel * 3
+        x_attn = MultiHeadedAttention(h, merge_channel, audio_model)
+        x_ff = PositionwiseFeedForward(merge_channel, d_ff, dropout)
+        self.x_tce = TCE(EncoderLayer(merge_channel, deepcopy(x_attn), deepcopy(x_ff), audio_model, dropout), N)
+        self.decoder = nn.Sequential(
+            nn.Linear(audio_model * merge_channel, segment_length * reduced_channel),
+            self.relu,
+            nn.Dropout(dropout),
+            nn.Linear(segment_length * reduced_channel, segment_length),
+            nn.Sigmoid()
+        )
 
     def forward(self, audio, imu, gas):
         audio_feat = self.audio_mrcnn(audio)
@@ -336,15 +341,14 @@ class AttnSleep(nn.Module):
         audio_features = self.audio_tce(audio_feat)
         imu_features = self.imu_tce(imu_feat)
         gas_features = self.gas_tce(gas_feat)
-        # imu_features = F.interpolate(imu_features, size=(audio_features.shape[2]), mode='linear')
-        # gas_features = F.interpolate(gas_features, size=(audio_features.shape[2]), mode='linear')
-        x_concat = torch.cat((audio_features, imu_features, gas_features), dim=2)
-        x_concat = self.channel_attn(x_concat)
-        x_concat = self.relu(x_concat)
+        imu_features = F.interpolate(imu_features, size=(audio_features.shape[2]), mode='linear')
+        gas_features = F.interpolate(gas_features, size=(audio_features.shape[2]), mode='linear')
+        x_concat = torch.cat((audio_features, imu_features, gas_features), dim=1)
+        x_concat = x_concat.permute(0, 2, 1)
         x_concat = self.x_tce(x_concat)
+        x_concat = x_concat.permute(0, 2, 1)
         x_concat = x_concat.contiguous().view(x_concat.shape[0], -1)
-        final_output = self.fc(x_concat)
-        final_output = self.sigmod(final_output)
+        final_output = self.decoder(x_concat)
         return final_output
 
 ######################################################################

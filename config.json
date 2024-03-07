@@ -7,7 +7,7 @@
     "HopDuration": 2,
     "BatchSize": 64,
     "TestBatchSize": 100,
-    "Epochs": 500,
+    "Epochs": 300,
     "LearningRate": 0.001,
     "Seed": 1,
     "Cuda": 2,
