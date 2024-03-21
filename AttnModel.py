@@ -7,7 +7,22 @@ from copy import deepcopy
 
 
 ########################################################################################
+class SELayer2D(nn.Module):
+    def __init__(self, channel, reduction=16):
+        super(SELayer2D, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.fc = nn.Sequential(
+            nn.Linear(channel, channel // reduction, bias=False),
+            nn.ReLU(inplace=True),
+            nn.Linear(channel // reduction, channel, bias=False),
+            nn.Sigmoid()
+        )
 
+    def forward(self, x):
+        b, c, _, _ = x.size()
+        y = self.avg_pool(x).view(b, c)
+        y = self.fc(y).view(b, c, 1, 1)
+        return x * y.expand_as(x)
 
 class SELayer(nn.Module):
     def __init__(self, channel, reduction=16):
@@ -26,6 +41,39 @@ class SELayer(nn.Module):
         y = self.fc(y).view(b, c, 1)
         return x * y.expand_as(x)
 
+class SEBasicBlock2D(nn.Module):
+    expansion = 1
+
+    def __init__(self, inplanes, planes, stride=1, downsample=None, groups=1,
+                 base_width=64, dilation=1, norm_layer=None,
+                 *, reduction=16):
+        super(SEBasicBlock2D, self).__init__()
+        self.conv1 = nn.Conv2d(inplanes, planes, stride)
+        self.bn1 = nn.BatchNorm2d(planes)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = nn.Conv2d(planes, planes, 1)
+        self.bn2 = nn.BatchNorm2d(planes)
+        self.se = SELayer2D(planes, reduction)
+        self.downsample = downsample
+        self.stride = stride
+
+    def forward(self, x):
+        residual = x
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = self.se(out)
+
+        if self.downsample is not None:
+            residual = self.downsample(x)
+
+        out += residual
+        out = self.relu(out)
+
+        return out
 
 class SEBasicBlock(nn.Module):
     expansion = 1
@@ -70,6 +118,76 @@ class SEBasicBlock(nn.Module):
 #         x = torch.nn.functional.gelu(x)
 #         return x
 
+class MRMSFFC(nn.Module):
+    def  __init__(self, reduced_channel, kernel_size1, stride1, kernel_size2, stride2, in_channels=1):
+        super(MRMSFFC, self).__init__()
+        drate = 0.5
+        self.GELU = nn.GELU()  # for older versions of PyTorch.  For new versions use nn.GELU() instead.
+        self.hight_feature1 = nn.Sequential(
+            nn.Conv2d(in_channels, 64, kernel_size=kernel_size1, stride=stride1, bias=False, padding=stride1 - 1, dilation=1),
+            nn.BatchNorm2d(64),
+            self.GELU,
+            nn.MaxPool2d(kernel_size=5, stride=2, padding=2),
+            nn.Dropout(drate)
+        )
+        self.hight_feature2 = nn.Sequential(
+            nn.Conv2d(64, 128, kernel_size=3, stride=1, bias=False, padding=1),
+            nn.BatchNorm2d(128),
+            self.GELU,
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, bias=False, padding=1),
+            nn.BatchNorm2d(128),
+            self.GELU,
+            nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
+        )
+        self.low_feature1 = nn.Sequential(
+            nn.Conv2d(in_channels, 64, kernel_size=kernel_size2, stride=stride2, bias=False, padding=stride2 - 1, dilation=1),
+            nn.BatchNorm2d(64),
+            self.GELU,
+            nn.MaxPool2d(kernel_size=7, stride=2, padding=2),
+            nn.Dropout(drate)
+        )
+        self.low_feature2 = nn.Sequential(
+            nn.Conv2d(64, 128, kernel_size=5, stride=1, bias=False, padding=2),
+            nn.BatchNorm2d(128),
+            self.GELU,
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, bias=False, padding=1),
+            nn.BatchNorm2d(128),
+            self.GELU,
+            nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
+        )
+        self.dropout = nn.Dropout(drate)
+        self.inplanes = 128
+        self.AFR = self._make_layer(SEBasicBlock2D, reduced_channel, 1)
+
+    def _make_layer(self, block, planes, blocks, stride=1):  # makes residual SE block
+        downsample = None
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            downsample = nn.Sequential(
+                nn.Conv2d(self.inplanes, planes * block.expansion,
+                          kernel_size=1, stride=stride, bias=False),
+                nn.BatchNorm2d(planes * block.expansion),
+            )
+
+        layers = []
+        layers.append(block(self.inplanes, planes, stride, downsample))
+        self.inplanes = planes * block.expansion
+        for i in range(1, blocks):
+            layers.append(block(self.inplanes, planes))
+
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        x_hight = self.hight_feature1(x)
+        x_low = self.low_feature1(x)
+        msg = F.interpolate(x_low, size=(x_hight.size(2), x_hight.size(3)), mode='bilinear', align_corners=False)
+        x_hight += msg
+        x_hight = self.hight_feature2(x_hight)
+        x_low = self.low_feature2(x_low)
+        msg = F.interpolate(x_low, size=(x_hight.size(2), x_hight.size(3)), mode='bilinear', align_corners=False)
+        x_hight += msg
+        x_merge = self.dropout(x_hight)
+        x_merge = self.AFR(x_merge)
+        return x_merge
 
 class MRCNN(nn.Module):
     def __init__(self, reduced_channel, kernel_size1, stride1, kernel_size2, stride2, in_channels=1):
@@ -349,6 +467,42 @@ class AttnSleep(nn.Module):
         x_concat = x_concat.permute(0, 2, 1)
         x_concat = x_concat.contiguous().view(x_concat.shape[0], -1)
         final_output = self.decoder(x_concat)
+        return final_output
+    
+class AttnSleep2D(nn.Module):
+    def __init__(self):
+        super(AttnSleep2D, self).__init__()
+
+        N = 2  # number of TCE clones
+        signal_model = 870
+        d_ff = 120   # dimension of feed forward
+        h = 5  # number of attention heads
+        dropout = 0.1
+        segment_length = 15
+        reduced_channel = 30
+
+        self.mrmsffc = MRMSFFC(reduced_channel, 5, 1, 7, 3, in_channels=5)
+        
+        signal_attn = MultiHeadedAttention(h, signal_model, reduced_channel)
+        signal_ff = PositionwiseFeedForward(signal_model, d_ff, dropout)
+        self.tce = TCE(EncoderLayer(signal_model, deepcopy(signal_attn), deepcopy(signal_ff), reduced_channel, dropout), N)
+        self.channel_attn = SELayer(reduced_channel)
+        self.relu = nn.ReLU()
+
+        self.decoder = nn.Sequential(
+            nn.Linear(signal_model * reduced_channel, segment_length * reduced_channel),
+            self.relu,
+            nn.Dropout(dropout),
+            nn.Linear(segment_length * reduced_channel, segment_length),
+            nn.Sigmoid()
+        )
+    def forward(self, audio, imu, gas):
+        signal = torch.cat((audio, imu, gas), dim=1)
+        signal_feat = self.mrmsffc(signal)
+        signal_feat = signal_feat.view(signal_feat.size(0), signal_feat.size(1), -1)
+        signal_features = self.tce(signal_feat)
+        signal_features = signal_features.contiguous().view(signal_features.size(0), -1)
+        final_output = self.decoder(signal_features)
         return final_output
 
 ######################################################################

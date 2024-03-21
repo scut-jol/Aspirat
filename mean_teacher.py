@@ -6,10 +6,11 @@ import torchaudio
 from sklearn.model_selection import KFold
 from dataset import Aspiration, collate_fn
 from torch.utils.data import DataLoader
-from AttnModel import AttnSleep
+from AttnModel import AttnSleep, AttnSleep2D
 from mean_train import Trainclass
 import json
 import os
+import pandas as pd
 
 
 def main():
@@ -58,32 +59,44 @@ def main():
 
     kwargs = {'num_workers': config_dict['NumWorkers']} if use_cuda else {}
 
-    audio_mel_spectrogram = torchaudio.transforms.MelSpectrogram(
+    audio_mel_spectrogram = torchaudio.transforms.MFCC(
         sample_rate=AUDIO_SAMPLE_RATE,
-        n_fft=1024,
-        hop_length=256,
-        n_mels=128
+        n_mfcc=64,
+        melkwargs={
+            "n_fft": 2048,
+            "n_mels": 64,
+            "hop_length": 800,
+            "mel_scale": "htk",
+        },
     )
-    imu_mel_spectrogram = torchaudio.transforms.MelSpectrogram(
+    imu_mel_spectrogram = torchaudio.transforms.MFCC(
         sample_rate=IMU_SAMPLE_RATE,
-        n_fft=256,
-        hop_length=64,
-        n_mels=128
+        n_mfcc=64,
+        melkwargs={
+            "n_fft": 256,
+            "n_mels": 64,
+            "hop_length": 50,
+            "mel_scale": "htk",
+        },
     )
-    gas_mel_spectrogram = torchaudio.transforms.MelSpectrogram(
-        sample_rate=GAS_SAMPLE_RATE,
-        n_fft=128,
-        hop_length=32,
-        n_mels=64
+    gas_mel_spectrogram = torchaudio.transforms.MFCC(
+        sample_rate=AUDIO_SAMPLE_RATE,
+        n_mfcc=64,
+        melkwargs={
+            "n_fft": 26,
+            "n_mels": 64,
+            "hop_length": 5,
+            "mel_scale": "htk",
+        },
     )
 
-    data = os.listdir(config_dict['train_dir'])
+    data = pd.read_csv(f"{config_dict['train_dir']}/meta.csv")
     kf = KFold(n_splits=config_dict['Splits'], shuffle=False, random_state=None)
     # kf = KFold(n_splits=config_dict['Splits'], shuffle=True, random_state=args.seed)
     fold_avg_acc, fold_avg_sen, fold_avg_spe, fold_avg_auc = 0, 0, 0, 0
     for fold, (train_idx, val_idx) in enumerate(kf.split(data), 1):
-        train_data = [data[i] for i in train_idx]
-        test_data = [data[i] for i in val_idx]
+        train_data = data.iloc[train_idx]
+        test_data = data.iloc[val_idx]
         Aspiration_train_dataset = Aspiration(train_data, config_dict['train_dir'])
         Aspiration_test_dataset = Aspiration(test_data, config_dict['train_dir'])
 
@@ -108,8 +121,8 @@ def main():
             collate_fn=collate_fn,
             **kwargs
         )
-
-        model = AttnSleep()
+        model_class = globals()[config_dict['Model']]
+        model = model_class()
         # mean_teacher = AttnSleep()
         model = model.to(device)
         # mean_teacher = mean_teacher.to(device)

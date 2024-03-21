@@ -8,7 +8,8 @@ import torchaudio
 import torch
 import numpy as np
 import time
-from scipy.stats import norm
+import librosa
+import matplotlib.pyplot as plt
 
 def reset_overlap(pred, overlap):
     for idx in range(1, pred.size(0)):
@@ -243,19 +244,30 @@ def mask_cut(labels, win_duration, hop_duartion, bins_num):
         start += bins_num - over_lap
     return torch.Tensor(masks)
 
-def generate_mask(data_size, std_factor=0.12):
+def generate_reverse_mask(data_size, std_factor=0.4):
     # 生成一维正态分布的蒙版并反转
     x = np.linspace(-1, 1, data_size)
+    # mask = np.random.exponential(scale=std_factor)
+    # mask = mask * 2 * std_factor + 0.5
     mask = np.exp(-x**2 / (2 * std_factor**2))  # 调整标准差
     mask = 1 - mask  # 反转正态分布
     return mask
+
+
+def generate_normalize_mask(data_size):
+    # 生成一维正态分布的蒙版并反转
+    x = np.linspace(-1, 1, data_size)
+    mask = np.exp(-x**2)
+    return mask
+
 
 def mask_normal(label, weight_1, start_idx, end_idx):
     data_size = end_idx - start_idx + 1  # 数据大小
     label_np = np.array(label)
     label_np[start_idx:end_idx + 1] = weight_1
 
-    mask = generate_mask(data_size)
+    mask = generate_reverse_mask(data_size)
+    # mask = generate_normalize_mask(data_size)
 
     data = label_np[start_idx:end_idx + 1]
     scaled_array = mask * (np.sum(data) / np.sum(mask))
@@ -270,7 +282,7 @@ def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
     stacked_labels = torch.cat(labels_list, dim=0)
     stacked_masks = torch.cat(masks_list, dim=0)
     count = 0
-    length = 4
+    length = 8
     timestamp = int(time.time())  # 获取当前时间戳
     for i in range(0, stacked_audio.shape[0], length):
         subset_audio = stacked_audio[i: i + length]
@@ -363,6 +375,7 @@ def data_build(healty=False):
             audio_list, imu_list, gas_list, labels_list, masks_list = [], [], [], [], []
         print(f"{root_path} file transformed!")
     dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
+    resort_meta()
     print("Data Transform Finished!")
 
 def post_process(input_data):
@@ -421,8 +434,39 @@ def delete_short_event(data):
                     data[i - idx - 1] = pre_type
             counts = 1
 
+def custom_sort(file):
+    split_name = file.split("_")
+    time_stamp  = split_name[-2]
+    count = split_name[-1].split(".")[-2]
+    return int(time_stamp+count)
+
+def resort_meta():
+    with open('Aspirat/config.json', 'r') as json_file:
+        config_dict = json.load(json_file)
+    data = os.listdir(f"Aspirat/{config_dict['train_dir']}")
+    data.sort(key=custom_sort)
+    df = pd.DataFrame(data)
+    df.to_csv(f"Aspirat/{config_dict['train_dir']}/meta.csv", index=False, header=False)
+
+def plot_spectrogram(specgram, title=None, ylabel="freq_bin", ax=None, name="", count=0):
+    for i, spec in enumerate(specgram):
+        if ax is None:
+            _, ax = plt.subplots(1, 1)
+        if title is not None:
+            ax.set_title(title)
+        ax.set_ylabel(ylabel)
+        ax.imshow(librosa.power_to_db(spec.cpu()), origin="lower", aspect="auto", interpolation="nearest")
+        filename = f"picture/{name}_{count}_{i}.png"
+        # 保存图像到本地文件
+        plt.savefig(filename)
+        # 显示保存成功的信息
+        print(f'Mel spectrogram saved as {filename}')
+    plt.close()
+
+
 if __name__ == "__main__":
     data_build(healty=False)
+    resort_meta()
     # process_folder("SegmentSwallow/healthy")
     # split_data('patient_meta.csv')
     # delete_files('SegmentSwallow', '.mp4')

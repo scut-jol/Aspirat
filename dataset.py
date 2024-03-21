@@ -139,7 +139,7 @@ class Aspiration(Dataset):
         return len(self.datas)
 
     def __getitem__(self, index):
-        file_path = os.path.join(self.root_path, self.datas[index])
+        file_path = os.path.join(self.root_path, self.datas.iloc[index, 0])
         loaded_dict = torch.load(file_path)
         assert loaded_dict['audio'].shape[1] == 1 and loaded_dict['audio'].shape[2] == 48000
         assert loaded_dict['imu'].shape[1] == 3 and loaded_dict['imu'].shape[2] == 3000
