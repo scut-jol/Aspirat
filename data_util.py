@@ -6,10 +6,93 @@ from sklearn.model_selection import train_test_split
 import json
 import torchaudio
 import torch
+import torch.nn as nn
 import numpy as np
 import time
 import librosa
 import matplotlib.pyplot as plt
+from scipy.stats import skew, kurtosis
+from scipy.fft import fft, fftfreq
+from scipy.signal import welch
+import torch.nn.init as init
+
+
+def get_weight(label):
+    # num_ones = torch.sum(label == 1).item()
+    # num_zeros = torch.sum(label == 0).item()
+    # alpha = num_ones / (num_ones + num_zeros)
+    alpha = 1 / 2.5
+    weight = label / alpha + (1 - label) / (1 - alpha)
+    return weight
+
+
+# def get_weight(label, t, T):
+#     L = 1.5
+#     k = 0.1
+#     ratio = L / (1 + np.exp(-k * (t - (T // 4))))
+#     num_ones = torch.sum(label == 1).item()
+#     num_zeros = torch.sum(label == 0).item()
+#     num_sum = num_ones + num_zeros
+#     q_zero = num_sum / num_zeros
+#     q_one = num_sum / num_ones
+#     weight = torch.ones_like(label)
+#     weight[label == 1] = q_one
+#     weight[label == 0] = q_zero
+#     n = len(weight)
+#     m = len(weight[0])
+#     for i in range(n):
+#         for j in range(1, m):
+#             if weight[i][j] != weight[i][j - 1]:
+#                 for count in range(1):
+#                     if j + count < m and j - count - 1 >= 0:
+#                         weight[i][j + count] *= ratio - (0.1 * count)
+#                         weight[i][j - count - 1] *= ratio - (0.1 * count)
+#                 break
+#     return weight
+
+
+def pre_emphasis(signal, alpha=0.97):
+    # 使用roll函数将最后一维向右移动一个位置
+    emphasized_signal = signal - alpha * torch.roll(signal, shifts=1, dims=-1)
+    # 将最后一维的第一个元素恢复为原始值，因为它没有前一个值可以减去
+    emphasized_signal[:, :, 0] = signal[:, :, 0]
+    return emphasized_signal
+
+
+def initialize_weights_zero(m):
+    if isinstance(m, nn.Linear):
+        init.constant_(m.weight, 0)
+        if m.bias is not None:
+            init.constant_(m.bias, 0)
+
+
+def initialize_weights_uniform(m):
+    if isinstance(m, nn.Linear):
+        init.uniform_(m.weight, a=-0.1, b=0.1)
+        if m.bias is not None:
+            init.uniform_(m.bias, a=-0.1, b=0.1)
+
+
+def initialize_weights_normal(m):
+    if isinstance(m, nn.Linear):
+        init.normal_(m.weight, mean=0, std=0.01)
+        if m.bias is not None:
+            init.normal_(m.bias, mean=0, std=0.01)
+
+
+def initialize_weights_xavier(m):
+    if isinstance(m, nn.Linear):
+        init.xavier_uniform_(m.weight)
+        if m.bias is not None:
+            init.constant_(m.bias, 0)
+
+
+def initialize_weights_he(m):
+    if isinstance(m, nn.Linear):
+        init.kaiming_uniform_(m.weight, nonlinearity='relu')
+        if m.bias is not None:
+            init.constant_(m.bias, 0)
+
 
 def reset_overlap(pred, overlap):
     for idx in range(1, pred.size(0)):
@@ -125,6 +208,42 @@ def compare_files(file1_path, file2_path, output_path):
         output_file.writelines(sorted(different_lines))
 
 
+def count_patient(root_folder):
+    patient_set = set()
+    for foldername, subfolders, filenames in os.walk(root_folder):
+        for filename in filenames:
+            if "Annotated" in filename:
+                patient_name = foldername.split('/')[-1].split('_')[0]
+                patient_set.add(patient_name)
+    for name in patient_set:
+        print(name)
+    print(len(patient_set))
+
+
+def count_swallow(root_folder):
+    swallow_count = 0
+    total_duration = 0
+    swallow_duration = []
+    for foldername, subfolders, filenames in os.walk(root_folder):
+        for filename in filenames:
+            if "Annotated" in filename:
+                Annotated_path = os.path.join(foldername, "Annotated.json")
+                gas_path = os.path.join(foldername, "gas.csv")
+                with open(Annotated_path, 'r') as json_file:
+                    data = json.load(json_file)
+                label_list = data['label_list']
+                for swallow_dict in label_list:
+                    duration = (swallow_dict['end'] - swallow_dict['start']) * 1000
+                    swallow_duration.append(duration)
+                gas_times = pd.read_csv(gas_path)['time'].values
+                total_duration += gas_times[-1] - gas_times[0]
+                swallow_count += len(label_list)
+                break
+    print(f"total time={total_duration}, swallow ratio={sum(swallow_duration)/total_duration * 100}%")
+    print(f"avg_duration={sum(swallow_duration)/len(swallow_duration)}")
+    print(f"swallow count={swallow_count}")
+
+
 def delete_files(root_folder, file_pattern):
     for foldername, subfolders, filenames in os.walk(root_folder):
         for filename in filenames:
@@ -132,6 +251,7 @@ def delete_files(root_folder, file_pattern):
                 file_path = os.path.join(foldername, filename)
                 os.remove(file_path)
                 print(f"Deleted: {file_path}")
+
 
 def split_data(meta_path):
     data = pd.read_csv(meta_path)
@@ -188,6 +308,7 @@ def frame(signal, win_sample, hop_sample):
 
     return frames
 
+
 def frame_cut(frame_length, label_list, win_duration, hop_duartion, bins_num):
     labels = []
     bin_s = win_duration / bins_num
@@ -204,6 +325,7 @@ def frame_cut(frame_length, label_list, win_duration, hop_duartion, bins_num):
                 else:
                     labels[i][bin] = 1.0
     return labels
+
 
 def mask_cut(labels, win_duration, hop_duartion, bins_num):
     p0 = 0.75
@@ -243,6 +365,7 @@ def mask_cut(labels, win_duration, hop_duartion, bins_num):
         masks.append(label_1d[start:start + bins_num])
         start += bins_num - over_lap
     return torch.Tensor(masks)
+
 
 def generate_reverse_mask(data_size, std_factor=0.4):
     # 生成一维正态分布的蒙版并反转
@@ -297,6 +420,7 @@ def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
         print(f"Shape:{stacked_audio.shape[0]} i={i} Dump {count} file={output_file}")
         count += 1
 
+
 def mix(signal):
     if signal.shape[0] == 2:
         signal = torch.mean(signal, dim=0, keepdim=True)
@@ -308,6 +432,193 @@ def resample(signal, sr, target_sample_rate):
         resample = torchaudio.transforms.Resample(sr, target_sample_rate)
         signal = resample(signal)
     return signal
+
+
+def predict_calculate_overlap(model, root_path, data_list, pth_path, device):
+    model.load_state_dict(torch.load(pth_path))
+    model.eval()
+    overlap_list = []
+    for index in range(len(data_list.iloc[:, 0])):
+        file_path = os.path.join(root_path, data_list.iloc[index, 0])
+        loaded_dict = torch.load(file_path)
+        audio = loaded_dict['audio'].to(device)
+        imu = loaded_dict['imu'].to(device)
+        gas = loaded_dict['gas'].to(device)
+        label = loaded_dict['labels'].to(device)
+        output = model(audio, imu, gas)
+        events = Advanced_post_processing(output)
+        label_events = Advanced_post_processing(label)
+        for event in label_events:
+            overlap_rate = 0
+            for pre_event in events:
+                overlap_rate = max(overlap_rate, calculate_jaccard_index(pre_event[0], pre_event[1], event[0], event[1]))
+            overlap_list.append(overlap_rate)
+    return overlap_list
+
+
+def Advanced_post_processing(pred, hop_duration=2, bin_duration=0.2):
+    events = []
+    swallow_flag = False
+    for i in range(pred.shape[0]):
+        pred_win = pred[i, :]
+        for j in range(pred_win.shape[0]):
+            bin_predicted = pred_win[j].item()
+            if swallow_flag:
+                if bin_predicted >= 0.4:
+                    start_point = i * hop_duration + j * bin_duration
+                    end_point = i * hop_duration + (j + 1) * bin_duration
+                    events.append([start_point, end_point])
+                else:
+                    swallow_flag = False
+            else:
+                if bin_predicted >= 0.6:
+                    swallow_flag = True
+                    start_point = i * hop_duration + j * bin_duration
+                    end_point = i * hop_duration + (j + 1) * bin_duration
+                    events.append([start_point, end_point])
+    events.sort(key=lambda x: x[0])
+    max_silence = 0.4
+    min_dur = 0.3
+
+    merge_silence_events(events, max_silence)
+    del_min_duration_events(events, min_dur)
+
+    for i in range(len(events)):
+        events[i][0] = round(events[i][0], 3)
+        events[i][1] = round(events[i][1], 3)
+
+    events.sort(key=lambda x: x[0])
+    return events
+
+
+def del_min_duration_events(events, min_duration):
+    count = 0
+    while count < len(events) - 1:
+        if events[count][1] - events[count][0] < min_duration:
+            del events[count]
+        else:
+            count += 1
+    if len(events) > 0 and events[count][1] - events[count][0] < min_duration:
+        del events[count]
+
+
+def compute_overlap_ratio(p_start, p_end, t_start, t_end):
+    overlap_start = max(p_start, t_start)
+    overlap_end = min(p_end, t_end)
+
+    if overlap_start >= overlap_end:
+        return 0.0
+
+    predicted_duration = p_end - p_start
+    true_duration = t_end - t_start
+    overlap_duration = overlap_end - overlap_start
+
+    overlap_ratio = overlap_duration / (predicted_duration + true_duration - overlap_duration)
+
+    return overlap_ratio
+
+
+def calculate_jaccard_index(a, b, x, y):
+    """
+    计算两个时间段的 Jaccard 相似系数。
+
+    参数:
+    a, b: 第一个时间段的开始和结束时间
+    x, y: 第二个时间段的开始和结束时间
+
+    返回:
+    Jaccard 相似系数
+    """
+    # 确保时间段是有效的
+    if a > b or x > y:
+        raise ValueError("Invalid time periods")
+
+    # 计算交集的开始和结束时间
+    intersection_start = max(a, x)
+    intersection_end = min(b, y)
+
+    # 如果没有交集
+    if intersection_start >= intersection_end:
+        return 0.0
+
+    # 计算交集和并集的持续时间
+    intersection_duration = intersection_end - intersection_start
+    union_duration = (b - a) + (y - x) - intersection_duration
+
+    # 计算 Jaccard 相似系数
+    jaccard_index = intersection_duration / union_duration
+
+    return jaccard_index
+
+
+def merge_silence_events(events, min_silence):
+    count = 0
+    while count < len(events) - 1:
+        if (events[count][1] >= events[count + 1][0]) or (events[count + 1][0] - events[count][1] <= min_silence):
+            events[count][1] = max(events[count + 1][1], events[count][1])
+            del events[count + 1]
+        else:
+            count += 1
+
+
+def merge_rows_and_remove_overlap(input):
+    two_d_list = input.tolist()
+    if not two_d_list:
+        return []
+
+    merged_list = []
+
+    for i in range(len(two_d_list) - 1):
+        # Current row
+        current_row = two_d_list[i]
+        # Next row
+        next_row = two_d_list[i + 1]
+
+        # Handle the overlapping part
+        for j in range(-5, 0):
+            next_row[j + 5] = (current_row[j] + next_row[j + 5]) / 2
+
+        # Append the non-overlapping part of the current row
+        merged_list.extend(current_row[:-5])
+
+    # Append the last row in full
+    merged_list.extend(two_d_list[-1])
+
+    return merged_list
+
+
+def post_process(input_data, rebuild=True):
+    sequence = merge_rows_and_remove_overlap(input_data)
+    upper_limit = 0.6
+    lower_limit = 0.4
+    swallow_status = False
+    output_sequence = []
+    threshold = 0.5  # Threshold for checking the previous value
+    for i, point in enumerate(sequence):
+        if point > upper_limit:
+            if i > 0 and output_sequence[-1] == 0 and sequence[i-1] > threshold:
+                # Modify the previous point if it exceeds the threshold
+                output_sequence[-1] = 1
+            swallow_status = True
+        elif point < lower_limit:
+            swallow_status = False
+
+        if swallow_status:
+            output_sequence.append(1)
+        else:
+            output_sequence.append(0)
+    delete_short_event(output_sequence)
+    if rebuild:
+        return rebuild_label(output_sequence)
+    else:
+        return output_sequence
+
+
+def rebuild_label(sequnce):
+    ouput = []
+    for i in range(0, len(sequnce) - 14, 10):
+        ouput.append(sequnce[i:i + 15])
+    return torch.tensor(ouput)
 
 
 def data_build(healty=False):
@@ -331,7 +642,7 @@ def data_build(healty=False):
     gas_win_sample = int(win_duration * gas_sample_rate)
     gas_hop_sample = int(hop_duartion * gas_sample_rate)
     bins_num = config_dict['BinNum']
-    audio_list, imu_list, gas_list, labels_list, masks_list = [], [], [], [], []
+    # audio_list, imu_list, gas_list, labels_list, masks_list = [], [], [], [], []
     for root_path in data.iloc[:, 0]:
         audio_path = root_path + '/audio.wav'
         imu_path = root_path + '/imu.csv'
@@ -355,7 +666,6 @@ def data_build(healty=False):
         imu_frames = frame(imu_tensor, imu_win_sample, imu_hop_sample)
         gas_frames = frame(gas_tensor, gas_win_sample, gas_hop_sample)
         labels = frame_cut(len(audio_frames), label_list, win_duration, hop_duartion, bins_num)
-        masks_tensor = mask_cut(labels, win_duration, hop_duartion, bins_num)
         labels = torch.Tensor(labels)
         if not (audio_frames.shape[0] == imu_frames.shape[0] == gas_frames.shape[0]):
             min_length = min(audio_frames.shape[0], imu_frames.shape[0], gas_frames.shape[0])
@@ -363,50 +673,55 @@ def data_build(healty=False):
             imu_frames = imu_frames[:min_length, :, :]
             gas_frames = gas_frames[:min_length, :, :]
             labels = labels[:min_length]
-            masks_tensor = masks_tensor[:min_length]
         assert not torch.isnan(audio_frames).any() and not torch.isnan(imu_frames).any() and not torch.isnan(gas_frames).any()
-        audio_list.append(audio_frames)
-        imu_list.append(imu_frames)
-        gas_list.append(gas_frames)
-        labels_list.append(labels)
-        masks_list.append(masks_tensor)
-        if len(audio_list) >= 20:
-            dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
-            audio_list, imu_list, gas_list, labels_list, masks_list = [], [], [], [], []
-        print(f"{root_path} file transformed!")
-    dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
-    resort_meta()
+        sample_dict = {'audio': audio_frames, 'imu': imu_frames, 'gas': gas_frames, 'labels': labels}
+        output_file = f'Aspirat/data/{dump_dir}/{root_path.split("/")[-1]}.pt'
+        torch.save(sample_dict, output_file)
+        print(f"Shape:{audio_frames.shape[0]} file={output_file}")
+        # audio_list.append(audio_frames)
+        # imu_list.append(imu_frames)
+        # gas_list.append(gas_frames)
+        # labels_list.append(labels)
+        # masks_list.append(masks_tensor)
+        # if len(audio_list) >= 20:
+        #     dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
+        #     audio_list, imu_list, gas_list, labels_list, masks_list = [], [], [], [], []
+    # dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir)
     print("Data Transform Finished!")
 
-def post_process(input_data):
-    data = input_data.tolist()
-    upper_limit = 0.55
-    lower_limit = 0.45
-    swallow = False
-    start_idx = 10
-    over_lap =  5
-    data_list = data[0][:10]
-    for line in range(1, len(data)):
-        for i in range(over_lap):
-            data_list.append((data[line][i] + data[line - 1][start_idx + i]) / 2)
-        for i in range(over_lap, start_idx):
-            data_list.append(data[line][i])
-    data_list.extend([value for value in data[-1][-5:]])
-    for i in range(len(data_list)):
-        if swallow:
-            if data_list[i] >= lower_limit:
-                data_list[i] = 1
-            else:
-                data_list[i] = 0
-                swallow = False
-        else:
-            if data_list[i] >= upper_limit:
-                data_list[i] = 1
-                swallow = True
-            else:
-                data_list[i] = 0
-    delete_short_event(data_list)
-    return rebuild_target(data_list)
+
+# def post_process(input_data):
+#     data = input_data.tolist()
+#     upper_limit = 0.55
+#     lower_limit = 0.45
+#     swallow = False
+#     start_idx = 10
+#     over_lap = 5
+#     data_list = data[0][:10]
+#     for line in range(1, len(data)):
+#         for i in range(over_lap):
+#             data_list.append((data[line][i] + data[line - 1][start_idx + i]) / 2)
+#         for i in range(over_lap, start_idx):
+#             data_list.append(data[line][i])
+#     data_list.extend([value for value in data[-1][-5:]])
+#     forward_list = data_list
+#     # reverse_list = data_list
+#     for i in range(len(data_list)):
+#         if swallow:
+#             if data_list[i] >= lower_limit:
+#                 forward_list[i] = 1
+#             else:
+#                 forward_list[i] = 0
+#                 swallow = False
+#         else:
+#             if data_list[i] >= upper_limit:
+#                 forward_list[i] = 1
+#                 swallow = True
+#             else:
+#                 forward_list[i] = 0
+#     delete_short_event(forward_list)
+#     return rebuild_target(data_list)
+
 
 def rebuild_target(data_list):
     window_size = 15
@@ -420,25 +735,39 @@ def rebuild_target(data_list):
 
     # 转换成PyTorch张量
     return torch.tensor(frames)
-    
+
+
 def delete_short_event(data):
-    counts = 4
-    pre_type = 0
-    for i in range(len(data)):
-        if data[i] == pre_type:
-            counts += 1
+    continue_one = process_type(data=data, distinct_val=0, continue_val=1)
+    continue_zero = process_type(data=continue_one, distinct_val=1, continue_val=0)
+    return continue_zero
+
+
+def process_type(data, distinct_val=0, continue_val=1, count=2):
+    n = len(data)
+    i = 0
+    result = data[:]
+    while i < n:
+        if result[i] == distinct_val:
+            start = i
+            while i < n and result[i] == distinct_val:
+                i += 1
+            end = i
+
+            if start > 0 and end < n and result[start - 1] == continue_val and result[end] == continue_val and end - start < count + 1:
+                for j in range(start, end):
+                    result[j] = continue_val
         else:
-            pre_type = data[i]
-            if counts <= 3:
-                for idx in range(counts):
-                    data[i - idx - 1] = pre_type
-            counts = 1
+            i += 1
+    return result
+
 
 def custom_sort(file):
     split_name = file.split("_")
-    time_stamp  = split_name[-2]
+    time_stamp = split_name[-2]
     count = split_name[-1].split(".")[-2]
     return int(time_stamp+count)
+
 
 def resort_meta():
     with open('Aspirat/config.json', 'r') as json_file:
@@ -447,6 +776,7 @@ def resort_meta():
     data.sort(key=custom_sort)
     df = pd.DataFrame(data)
     df.to_csv(f"Aspirat/{config_dict['train_dir']}/meta.csv", index=False, header=False)
+
 
 def plot_spectrogram(specgram, title=None, ylabel="freq_bin", ax=None, name="", count=0):
     for i, spec in enumerate(specgram):
@@ -464,9 +794,141 @@ def plot_spectrogram(specgram, title=None, ylabel="freq_bin", ax=None, name="", 
     plt.close()
 
 
+def extract_feature(healthy=False):
+    with open('Aspirat/config.json', 'r') as json_file:
+        config_dict = json.load(json_file)
+    meta_csv = config_dict['patient_data_meta']
+    if healthy:
+        meta_csv = config_dict['healthy_data_meta']
+    data = pd.read_csv(meta_csv)
+    audio_sample_rate = config_dict['AudioSampleRate']
+    imu_sample_rate = config_dict['ImuSampleRate']
+    gas_sample_rate = config_dict['GasSampleRate']
+    features_list = []
+    for root_path in data.iloc[:, 0]:
+        audio_path = root_path + '/audio.wav'
+        imu_path = root_path + '/imu.csv'
+        gas_path = root_path + '/gas.csv'
+        Annotated_path = root_path + '/Annotated.json'
+        with open(Annotated_path, 'r') as json_file:
+            data = json.load(json_file)
+        label_list = data['label_list']
+        audio, sr = librosa.load(audio_path, sr=audio_sample_rate)
+        if audio.ndim > 1:
+            audio = np.mean(audio, axis=0)
+        imu = pd.read_csv(imu_path)
+        x_values = imu['X'].values
+        y_values = imu['Y'].values
+        z_values = imu['Z'].values
+        # 将 x、y、z 列的数值组合成一个三通道的数组
+        imu = np.column_stack((x_values, y_values, z_values))
+        gas = np.array(pd.read_csv(gas_path)['value'].values)
+        for count, label in enumerate(label_list):
+            start_value = label['start']
+            end_value = label['end']
+            audio_start = int(start_value * audio_sample_rate)
+            audio_end = int(end_value * audio_sample_rate)
+            imu_start = int(start_value * imu_sample_rate)
+            imu_end = int(end_value * imu_sample_rate)
+            gas_start = int(start_value * gas_sample_rate)
+            gas_end = int(end_value * gas_sample_rate)
+            sample_audio = audio[audio_start:audio_end]
+            sample_imu = imu[imu_start:imu_end, :]
+            sample_gas = gas[gas_start:gas_end]
+            features = extract_time_domain_features("audio", sample_audio)
+            features.update(extract_frequency_domain_features("audio", sample_audio, audio_sample_rate))
+            features.update(extract_time_domain_features("imu_x", sample_imu[:, 0]))
+            features.update(extract_frequency_domain_features("imu_x", sample_imu[:, 0], imu_sample_rate))
+            features.update(extract_time_domain_features("imu_y", sample_imu[:, 1]))
+            features.update(extract_frequency_domain_features("imu_y", sample_imu[:, 1], imu_sample_rate))
+            features.update(extract_time_domain_features("imu_z", sample_imu[:, 2]))
+            features.update(extract_frequency_domain_features("imu_z", sample_imu[:, 2], imu_sample_rate))
+            features.update(extract_time_domain_features("gas", sample_gas))
+            features.update(extract_frequency_domain_features("gas", sample_gas, gas_sample_rate))
+            features_list.append(features)
+        print(f"file {root_path} extract success.")
+    df = pd.DataFrame(features_list)
+    csv_file_path = 'patient_features.csv'
+    df.to_csv(csv_file_path, index=False)
+    print(f"保存的特征 DataFrame: healthy={healthy}")
+
+
+def extract_frequency_domain_features(feature_type, data, sampling_rate):
+    # 计算信号的功率谱密度
+    if data.shape[0] < 256:
+        frequencies, power_density = welch(data, fs=sampling_rate, nperseg=64)
+    else:
+        frequencies, power_density = welch(data, fs=sampling_rate)
+
+    # 找到功率谱密度最大值对应的频率（主频率）
+    dominant_frequency = frequencies[np.argmax(power_density)]
+
+    # 计算频谱能量
+    spectral_energy = np.sum(power_density)
+
+    # 计算频谱中心
+    spectral_centroid = np.sum(frequencies * power_density) / np.sum(power_density)
+
+    # 计算频谱带宽
+    spectral_bandwidth = np.sqrt(np.sum((frequencies - spectral_centroid)**2 * power_density) / np.sum(power_density))
+
+    # 计算频谱斜度
+    spectral_skewness = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**3 * power_density) / np.sum(power_density)
+
+    # 计算频谱峰度
+    spectral_kurtosis = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**4 * power_density) / np.sum(power_density)
+
+    # 将功率谱密度数组转换成字符串
+    power_density_str = ','.join(map(str, power_density))
+
+    # 返回提取的频域特征
+    features = {
+        f'{feature_type}_dominant_frequency': dominant_frequency,
+        f'{feature_type}_spectral_energy': spectral_energy,
+        f'{feature_type}_spectral_centroid': spectral_centroid,
+        f'{feature_type}_spectral_bandwidth': spectral_bandwidth,
+        f'{feature_type}_spectral_skewness': spectral_skewness,
+        f'{feature_type}_spectral_kurtosis': spectral_kurtosis,
+        f'{feature_type}_power_density': power_density_str  # 可选：返回完整的功率谱密度数组
+    }
+
+    return features
+
+
+def extract_time_domain_features(feature_type, data):
+    # 计算均值、标准差、最大值、最小值
+    mean_value = np.mean(data)
+    std_deviation = np.std(data)
+    max_value = np.max(data)
+    min_value = np.min(data)
+
+    # 计算峰值（绝对值的最大值）
+    peak_value = np.max(np.abs(data))
+
+    # 计算偏度和峰度
+    data_skewness = skew(data)
+    data_kurtosis = kurtosis(data)
+
+    # 返回提取的时域特征
+    features = {
+        f'{feature_type}_mean': mean_value,
+        f'{feature_type}_std_deviation': std_deviation,
+        f'{feature_type}_max': max_value,
+        f'{feature_type}_min': min_value,
+        f'{feature_type}_peak': peak_value,
+        f'{feature_type}_skewness': data_skewness,
+        f'{feature_type}_kurtosis': data_kurtosis
+    }
+
+    return features
+
+
 if __name__ == "__main__":
-    data_build(healty=False)
-    resort_meta()
+    # count_patient("SegmentSwallow/patient")
+    count_swallow("../SegmentSwallow/patient")
+    # extract_feature()
+    # data_build(healty=True)
+    # resort_meta()
     # process_folder("SegmentSwallow/healthy")
     # split_data('patient_meta.csv')
     # delete_files('SegmentSwallow', '.mp4')

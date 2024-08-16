@@ -1,0 +1,1701 @@
+[0/12] Train loss=1.3346357345581055
+[5/12] Train loss=1.1157575845718384
+[10/12] Train loss=0.9725881218910217
+Test set avg_accuracy=82.31% avg_sensitivity=46.80%, avg_specificity=95.02% avg_auc=0.8471
+Best model saved!!!!
+Fold[1] Epoch: 1 [1/300 (0%)] Train loss=1.581856 Test loss=0.410028
+
+[0/12] Train loss=0.9187749028205872
+[5/12] Train loss=0.8630313873291016
+[10/12] Train loss=0.8294960856437683
+Test set avg_accuracy=81.29% avg_sensitivity=48.75%, avg_specificity=92.94% avg_auc=0.8559
+Fold[1] Epoch: 2 [2/300 (1%)] Train loss=0.898529 Test loss=0.418000
+
+[0/12] Train loss=0.8091124892234802
+[5/12] Train loss=0.8707975149154663
+[10/12] Train loss=0.7053624391555786
+Test set avg_accuracy=84.68% avg_sensitivity=70.34%, avg_specificity=89.81% avg_auc=0.9004
+Best model saved!!!!
+Fold[1] Epoch: 3 [3/300 (1%)] Train loss=0.805400 Test loss=0.347058
+
+[0/12] Train loss=0.6957366466522217
+[5/12] Train loss=0.706845223903656
+[10/12] Train loss=0.6212965250015259
+Test set avg_accuracy=85.05% avg_sensitivity=64.93%, avg_specificity=92.26% avg_auc=0.9063
+Fold[1] Epoch: 4 [4/300 (1%)] Train loss=0.715106 Test loss=0.343945
+
+[0/12] Train loss=0.6434403657913208
+[5/12] Train loss=0.6763039231300354
+[10/12] Train loss=0.5734109878540039
+Test set avg_accuracy=85.71% avg_sensitivity=77.10%, avg_specificity=88.80% avg_auc=0.9158
+Best model saved!!!!
+Fold[1] Epoch: 5 [5/300 (2%)] Train loss=0.669852 Test loss=0.338416
+
+[0/12] Train loss=0.6228271722793579
+[5/12] Train loss=0.6140633821487427
+[10/12] Train loss=0.5333459377288818
+Test set avg_accuracy=86.58% avg_sensitivity=73.84%, avg_specificity=91.15% avg_auc=0.9243
+Best model saved!!!!
+Fold[1] Epoch: 6 [6/300 (2%)] Train loss=0.602833 Test loss=0.316648
+
+[0/12] Train loss=0.5370514392852783
+[5/12] Train loss=0.6134166121482849
+[10/12] Train loss=0.5369271039962769
+Test set avg_accuracy=87.03% avg_sensitivity=75.94%, avg_specificity=91.00% avg_auc=0.9281
+Best model saved!!!!
+Fold[1] Epoch: 7 [7/300 (2%)] Train loss=0.574440 Test loss=0.305843
+
+[0/12] Train loss=0.5087850093841553
+[5/12] Train loss=0.6079322099685669
+[10/12] Train loss=0.5456832647323608
+Test set avg_accuracy=86.10% avg_sensitivity=67.99%, avg_specificity=92.58% avg_auc=0.9168
+Fold[1] Epoch: 8 [8/300 (3%)] Train loss=0.551417 Test loss=0.330624
+
+[0/12] Train loss=0.5734195113182068
+[5/12] Train loss=0.565147876739502
+[10/12] Train loss=0.4688420295715332
+Test set avg_accuracy=86.16% avg_sensitivity=64.17%, avg_specificity=94.04% avg_auc=0.9125
+Fold[1] Epoch: 9 [9/300 (3%)] Train loss=0.563725 Test loss=0.352860
+
+[0/12] Train loss=0.5599246621131897
+[5/12] Train loss=0.6031687259674072
+[10/12] Train loss=0.4921903908252716
+Test set avg_accuracy=86.27% avg_sensitivity=66.76%, avg_specificity=93.25% avg_auc=0.9153
+Fold[1] Epoch: 10 [10/300 (3%)] Train loss=0.569591 Test loss=0.338700
+
+[0/12] Train loss=0.4677318036556244
+[5/12] Train loss=0.559276819229126
+[10/12] Train loss=0.4679613411426544
+Test set avg_accuracy=85.79% avg_sensitivity=69.46%, avg_specificity=91.63% avg_auc=0.9114
+Fold[1] Epoch: 11 [11/300 (4%)] Train loss=0.520583 Test loss=0.332977
+
+[0/12] Train loss=0.4549536406993866
+[5/12] Train loss=0.42485663294792175
+[10/12] Train loss=0.41522616147994995
+Test set avg_accuracy=86.35% avg_sensitivity=71.21%, avg_specificity=91.77% avg_auc=0.9147
+Fold[1] Epoch: 12 [12/300 (4%)] Train loss=0.455067 Test loss=0.328843
+
+[0/12] Train loss=0.4505659341812134
+[5/12] Train loss=0.4363722503185272
+[10/12] Train loss=0.41709575057029724
+Test set avg_accuracy=85.64% avg_sensitivity=87.28%, avg_specificity=85.05% avg_auc=0.9331
+Best model saved!!!!
+Fold[1] Epoch: 13 [13/300 (4%)] Train loss=0.449740 Test loss=0.352696
+
+[0/12] Train loss=0.4171280264854431
+[5/12] Train loss=0.4492681324481964
+[10/12] Train loss=0.37562572956085205
+Test set avg_accuracy=86.37% avg_sensitivity=87.12%, avg_specificity=86.11% avg_auc=0.9359
+Best model saved!!!!
+Fold[1] Epoch: 14 [14/300 (5%)] Train loss=0.392986 Test loss=0.377624
+
+[0/12] Train loss=0.38281679153442383
+[5/12] Train loss=0.3542662560939789
+[10/12] Train loss=0.3118765354156494
+Test set avg_accuracy=83.98% avg_sensitivity=88.99%, avg_specificity=82.19% avg_auc=0.9315
+Fold[1] Epoch: 15 [15/300 (5%)] Train loss=0.360734 Test loss=0.454551
+
+[0/12] Train loss=0.4150328040122986
+[5/12] Train loss=0.3054412305355072
+[10/12] Train loss=0.2627938985824585
+Test set avg_accuracy=85.49% avg_sensitivity=86.40%, avg_specificity=85.17% avg_auc=0.9303
+Fold[1] Epoch: 16 [16/300 (5%)] Train loss=0.331521 Test loss=0.383331
+
+[0/12] Train loss=0.2789648175239563
+[5/12] Train loss=0.2641738951206207
+[10/12] Train loss=0.2186121940612793
+Test set avg_accuracy=85.74% avg_sensitivity=78.21%, avg_specificity=88.44% avg_auc=0.9205
+Fold[1] Epoch: 17 [17/300 (6%)] Train loss=0.268794 Test loss=0.377153
+
+[0/12] Train loss=0.24502567946910858
+[5/12] Train loss=0.21730820834636688
+[10/12] Train loss=0.20518676936626434
+Test set avg_accuracy=86.66% avg_sensitivity=77.69%, avg_specificity=89.86% avg_auc=0.9263
+Fold[1] Epoch: 18 [18/300 (6%)] Train loss=0.233254 Test loss=0.382602
+
+[0/12] Train loss=0.20875823497772217
+[5/12] Train loss=0.2031489759683609
+[10/12] Train loss=0.18272627890110016
+Test set avg_accuracy=86.23% avg_sensitivity=78.09%, avg_specificity=89.14% avg_auc=0.9234
+Fold[1] Epoch: 19 [19/300 (6%)] Train loss=0.209724 Test loss=0.388600
+
+[0/12] Train loss=0.18847137689590454
+[5/12] Train loss=0.1728724241256714
+[10/12] Train loss=0.15220284461975098
+Test set avg_accuracy=85.83% avg_sensitivity=82.43%, avg_specificity=87.05% avg_auc=0.9304
+Fold[1] Epoch: 20 [20/300 (7%)] Train loss=0.179338 Test loss=0.418930
+
+[0/12] Train loss=0.16979257762432098
+[5/12] Train loss=0.14970329403877258
+[10/12] Train loss=0.12225748598575592
+Test set avg_accuracy=86.38% avg_sensitivity=83.34%, avg_specificity=87.47% avg_auc=0.9318
+Fold[1] Epoch: 21 [21/300 (7%)] Train loss=0.155798 Test loss=0.460857
+
+[0/12] Train loss=0.14746668934822083
+[5/12] Train loss=0.12918265163898468
+[10/12] Train loss=0.11502903699874878
+Test set avg_accuracy=86.88% avg_sensitivity=75.67%, avg_specificity=90.89% avg_auc=0.9190
+Fold[1] Epoch: 22 [22/300 (7%)] Train loss=0.146135 Test loss=0.432863
+
+[0/12] Train loss=0.11676447838544846
+[5/12] Train loss=0.13671427965164185
+[10/12] Train loss=0.11859053373336792
+Test set avg_accuracy=86.35% avg_sensitivity=79.17%, avg_specificity=88.93% avg_auc=0.9201
+Fold[1] Epoch: 23 [23/300 (8%)] Train loss=0.125637 Test loss=0.461408
+
+[0/12] Train loss=0.10920233279466629
+[5/12] Train loss=0.09654519706964493
+[10/12] Train loss=0.08746082335710526
+Test set avg_accuracy=86.00% avg_sensitivity=81.55%, avg_specificity=87.59% avg_auc=0.9228
+Fold[1] Epoch: 24 [24/300 (8%)] Train loss=0.106672 Test loss=0.523652
+
+[0/12] Train loss=0.10593214631080627
+[5/12] Train loss=0.08852383494377136
+[10/12] Train loss=0.07274436205625534
+Test set avg_accuracy=85.91% avg_sensitivity=81.27%, avg_specificity=87.57% avg_auc=0.9203
+Fold[1] Epoch: 25 [25/300 (8%)] Train loss=0.098202 Test loss=0.522588
+
+[0/12] Train loss=0.08738702535629272
+[5/12] Train loss=0.06410185992717743
+[10/12] Train loss=0.08688490092754364
+Test set avg_accuracy=87.00% avg_sensitivity=74.31%, avg_specificity=91.54% avg_auc=0.9207
+Fold[1] Epoch: 26 [26/300 (9%)] Train loss=0.084943 Test loss=0.485727
+
+[0/12] Train loss=0.0658247098326683
+[5/12] Train loss=0.07578001171350479
+[10/12] Train loss=0.0610695444047451
+Test set avg_accuracy=86.56% avg_sensitivity=74.23%, avg_specificity=90.98% avg_auc=0.9205
+Fold[1] Epoch: 27 [27/300 (9%)] Train loss=0.073561 Test loss=0.518738
+
+Early Stopping!!! Best loss=0.3058430850505829
+Fold[1] Best Result: acc=86.37316561844864 sen=87.11729622266402, spe=86.1067615658363, auc=0.9359074025597306!
+[0/12] Train loss=1.4153094291687012
+[5/12] Train loss=1.1207748651504517
+[10/12] Train loss=0.9291567206382751
+Test set avg_accuracy=79.59% avg_sensitivity=16.13%, avg_specificity=97.42% avg_auc=0.8100
+Best model saved!!!!
+Fold[2] Epoch: 1 [1/300 (0%)] Train loss=1.423786 Test loss=0.573825
+
+[0/12] Train loss=0.8285837769508362
+[5/12] Train loss=0.9204220771789551
+[10/12] Train loss=0.7774136662483215
+Test set avg_accuracy=83.63% avg_sensitivity=58.09%, avg_specificity=90.81% avg_auc=0.8678
+Best model saved!!!!
+Fold[2] Epoch: 2 [2/300 (1%)] Train loss=0.901705 Test loss=0.362986
+
+[0/12] Train loss=0.7489562034606934
+[5/12] Train loss=0.7731461524963379
+[10/12] Train loss=0.6591720581054688
+Test set avg_accuracy=84.23% avg_sensitivity=60.25%, avg_specificity=90.97% avg_auc=0.8823
+Best model saved!!!!
+Fold[2] Epoch: 3 [3/300 (1%)] Train loss=0.754562 Test loss=0.349887
+
+[0/12] Train loss=0.6475082039833069
+[5/12] Train loss=0.6983954310417175
+[10/12] Train loss=0.5825403332710266
+Test set avg_accuracy=84.39% avg_sensitivity=66.68%, avg_specificity=89.37% avg_auc=0.8879
+Best model saved!!!!
+Fold[2] Epoch: 4 [4/300 (1%)] Train loss=0.681985 Test loss=0.355778
+
+[0/12] Train loss=0.5996198654174805
+[5/12] Train loss=0.6722747087478638
+[10/12] Train loss=0.5570026636123657
+Test set avg_accuracy=84.66% avg_sensitivity=59.72%, avg_specificity=91.66% avg_auc=0.8886
+Fold[2] Epoch: 5 [5/300 (2%)] Train loss=0.639105 Test loss=0.359255
+
+[0/12] Train loss=0.5598349571228027
+[5/12] Train loss=0.6158781051635742
+[10/12] Train loss=0.5003303289413452
+Test set avg_accuracy=85.83% avg_sensitivity=62.36%, avg_specificity=92.43% avg_auc=0.8980
+Best model saved!!!!
+Fold[2] Epoch: 6 [6/300 (2%)] Train loss=0.596086 Test loss=0.345245
+
+[0/12] Train loss=0.5569012761116028
+[5/12] Train loss=0.6091229319572449
+[10/12] Train loss=0.5068092942237854
+Test set avg_accuracy=85.65% avg_sensitivity=67.45%, avg_specificity=90.76% avg_auc=0.9022
+Best model saved!!!!
+Fold[2] Epoch: 7 [7/300 (2%)] Train loss=0.587021 Test loss=0.338575
+
+[0/12] Train loss=0.5320925116539001
+[5/12] Train loss=0.5739997029304504
+[10/12] Train loss=0.4496730864048004
+Test set avg_accuracy=85.96% avg_sensitivity=70.67%, avg_specificity=90.26% avg_auc=0.9023
+Best model saved!!!!
+Fold[2] Epoch: 8 [8/300 (3%)] Train loss=0.540874 Test loss=0.345230
+
+[0/12] Train loss=0.4723864793777466
+[5/12] Train loss=0.5063244700431824
+[10/12] Train loss=0.3891942799091339
+Test set avg_accuracy=86.96% avg_sensitivity=64.28%, avg_specificity=93.34% avg_auc=0.9036
+Fold[2] Epoch: 9 [9/300 (3%)] Train loss=0.471138 Test loss=0.361317
+
+[0/12] Train loss=0.4340009093284607
+[5/12] Train loss=0.46230876445770264
+[10/12] Train loss=0.3344428837299347
+Test set avg_accuracy=86.78% avg_sensitivity=70.19%, avg_specificity=91.45% avg_auc=0.9098
+Best model saved!!!!
+Fold[2] Epoch: 10 [10/300 (3%)] Train loss=0.421564 Test loss=0.364194
+
+[0/12] Train loss=0.3618171513080597
+[5/12] Train loss=0.4061684012413025
+[10/12] Train loss=0.3057927191257477
+Test set avg_accuracy=87.15% avg_sensitivity=65.53%, avg_specificity=93.23% avg_auc=0.9076
+Fold[2] Epoch: 11 [11/300 (4%)] Train loss=0.376585 Test loss=0.384914
+
+[0/12] Train loss=0.358331561088562
+[5/12] Train loss=0.3599325120449066
+[10/12] Train loss=0.31066739559173584
+Test set avg_accuracy=86.49% avg_sensitivity=76.09%, avg_specificity=89.41% avg_auc=0.9175
+Best model saved!!!!
+Fold[2] Epoch: 12 [12/300 (4%)] Train loss=0.364538 Test loss=0.363663
+
+[0/12] Train loss=0.31874069571495056
+[5/12] Train loss=0.33047211170196533
+[10/12] Train loss=0.29447269439697266
+Test set avg_accuracy=87.14% avg_sensitivity=67.79%, avg_specificity=92.58% avg_auc=0.9077
+Fold[2] Epoch: 13 [13/300 (4%)] Train loss=0.333191 Test loss=0.341404
+
+[0/12] Train loss=0.3565616011619568
+[5/12] Train loss=0.27652841806411743
+[10/12] Train loss=0.24755997955799103
+Test set avg_accuracy=86.96% avg_sensitivity=65.05%, avg_specificity=93.12% avg_auc=0.9018
+Fold[2] Epoch: 14 [14/300 (5%)] Train loss=0.290870 Test loss=0.392777
+
+[0/12] Train loss=0.26081281900405884
+[5/12] Train loss=0.2350199967622757
+[10/12] Train loss=0.24779056012630463
+Test set avg_accuracy=86.49% avg_sensitivity=75.52%, avg_specificity=89.57% avg_auc=0.9092
+Fold[2] Epoch: 15 [15/300 (5%)] Train loss=0.272981 Test loss=0.453288
+
+[0/12] Train loss=0.25372353196144104
+[5/12] Train loss=0.2850648760795593
+[10/12] Train loss=0.23257358372211456
+Test set avg_accuracy=84.70% avg_sensitivity=77.92%, avg_specificity=86.60% avg_auc=0.9074
+Fold[2] Epoch: 16 [16/300 (5%)] Train loss=0.248831 Test loss=0.530905
+
+[0/12] Train loss=0.31091219186782837
+[5/12] Train loss=0.22904957830905914
+[10/12] Train loss=0.19540247321128845
+Test set avg_accuracy=84.89% avg_sensitivity=79.07%, avg_specificity=86.52% avg_auc=0.9122
+Fold[2] Epoch: 17 [17/300 (6%)] Train loss=0.235126 Test loss=0.520477
+
+[0/12] Train loss=0.22359782457351685
+[5/12] Train loss=0.18731163442134857
+[10/12] Train loss=0.16517211496829987
+Test set avg_accuracy=85.01% avg_sensitivity=80.56%, avg_specificity=86.27% avg_auc=0.9111
+Fold[2] Epoch: 18 [18/300 (6%)] Train loss=0.190419 Test loss=0.529097
+
+[0/12] Train loss=0.19649076461791992
+[5/12] Train loss=0.163737952709198
+[10/12] Train loss=0.13940736651420593
+Test set avg_accuracy=85.50% avg_sensitivity=79.98%, avg_specificity=87.05% avg_auc=0.9107
+Fold[2] Epoch: 19 [19/300 (6%)] Train loss=0.163988 Test loss=0.514735
+
+[0/12] Train loss=0.1615820974111557
+[5/12] Train loss=0.14097614586353302
+[10/12] Train loss=0.1214795708656311
+Test set avg_accuracy=87.02% avg_sensitivity=75.61%, avg_specificity=90.23% avg_auc=0.9126
+Best model saved!!!!
+Fold[2] Epoch: 20 [20/300 (7%)] Train loss=0.143638 Test loss=0.525412
+
+[0/12] Train loss=0.1488194614648819
+[5/12] Train loss=0.11712546646595001
+[10/12] Train loss=0.10286291688680649
+Test set avg_accuracy=86.79% avg_sensitivity=71.05%, avg_specificity=91.22% avg_auc=0.9095
+Fold[2] Epoch: 21 [21/300 (7%)] Train loss=0.122772 Test loss=0.499648
+
+[0/12] Train loss=0.13819901645183563
+[5/12] Train loss=0.10644733905792236
+[10/12] Train loss=0.08309083431959152
+Test set avg_accuracy=87.25% avg_sensitivity=70.24%, avg_specificity=92.03% avg_auc=0.9083
+Fold[2] Epoch: 22 [22/300 (7%)] Train loss=0.111148 Test loss=0.552032
+
+[0/12] Train loss=0.11330001056194305
+[5/12] Train loss=0.10295343399047852
+[10/12] Train loss=0.07837634533643723
+Test set avg_accuracy=86.95% avg_sensitivity=69.71%, avg_specificity=91.80% avg_auc=0.9099
+Fold[2] Epoch: 23 [23/300 (8%)] Train loss=0.096370 Test loss=0.562997
+
+[0/12] Train loss=0.09511727094650269
+[5/12] Train loss=0.08112502843141556
+[10/12] Train loss=0.062233127653598785
+Test set avg_accuracy=87.20% avg_sensitivity=73.31%, avg_specificity=91.11% avg_auc=0.9136
+Fold[2] Epoch: 24 [24/300 (8%)] Train loss=0.082493 Test loss=0.572642
+
+[0/12] Train loss=0.08688811212778091
+[5/12] Train loss=0.06819044053554535
+[10/12] Train loss=0.06962365657091141
+Test set avg_accuracy=86.91% avg_sensitivity=74.56%, avg_specificity=90.38% avg_auc=0.9144
+Fold[2] Epoch: 25 [25/300 (8%)] Train loss=0.069656 Test loss=0.635255
+
+[0/12] Train loss=0.06739673018455505
+[5/12] Train loss=0.04739702492952347
+[10/12] Train loss=0.04502205550670624
+Test set avg_accuracy=86.80% avg_sensitivity=72.20%, avg_specificity=90.91% avg_auc=0.9078
+Fold[2] Epoch: 26 [26/300 (9%)] Train loss=0.057404 Test loss=0.615655
+
+[0/12] Train loss=0.0477910190820694
+[5/12] Train loss=0.03655124828219414
+[10/12] Train loss=0.039620909839868546
+Test set avg_accuracy=87.47% avg_sensitivity=70.86%, avg_specificity=92.13% avg_auc=0.9146
+Fold[2] Epoch: 27 [27/300 (9%)] Train loss=0.045598 Test loss=0.638489
+
+Early Stopping!!! Best loss=0.33857467770576477
+Fold[2] Best Result: acc=87.02474986835178 sen=75.61209793566971, spe=90.23205612520238, auc=0.9126073339570272!
+[0/12] Train loss=1.423331618309021
+[5/12] Train loss=1.1082109212875366
+[10/12] Train loss=0.8911160230636597
+Test set avg_accuracy=70.36% avg_sensitivity=4.63%, avg_specificity=99.53% avg_auc=0.7926
+Best model saved!!!!
+Fold[3] Epoch: 1 [1/300 (0%)] Train loss=1.588954 Test loss=0.667417
+
+[0/12] Train loss=0.8536422252655029
+[5/12] Train loss=0.8450323343276978
+[10/12] Train loss=0.7537437677383423
+Test set avg_accuracy=76.14% avg_sensitivity=30.06%, avg_specificity=96.59% avg_auc=0.8489
+Best model saved!!!!
+Fold[3] Epoch: 2 [2/300 (1%)] Train loss=0.848239 Test loss=0.575528
+
+[0/12] Train loss=0.753959059715271
+[5/12] Train loss=0.7661998271942139
+[10/12] Train loss=0.642189085483551
+Test set avg_accuracy=79.39% avg_sensitivity=59.22%, avg_specificity=88.34% avg_auc=0.8576
+Best model saved!!!!
+Fold[3] Epoch: 3 [3/300 (1%)] Train loss=0.735320 Test loss=0.448004
+
+[0/12] Train loss=0.6449267864227295
+[5/12] Train loss=0.6100219488143921
+[10/12] Train loss=0.577983558177948
+Test set avg_accuracy=80.16% avg_sensitivity=54.45%, avg_specificity=91.57% avg_auc=0.8714
+Best model saved!!!!
+Fold[3] Epoch: 4 [4/300 (1%)] Train loss=0.637598 Test loss=0.457131
+
+[0/12] Train loss=0.5793601274490356
+[5/12] Train loss=0.5565159916877747
+[10/12] Train loss=0.5328794121742249
+Test set avg_accuracy=81.27% avg_sensitivity=56.66%, avg_specificity=92.19% avg_auc=0.8812
+Best model saved!!!!
+Fold[3] Epoch: 5 [5/300 (2%)] Train loss=0.578003 Test loss=0.449337
+
+[0/12] Train loss=0.511627197265625
+[5/12] Train loss=0.5262444019317627
+[10/12] Train loss=0.4416191279888153
+Test set avg_accuracy=82.91% avg_sensitivity=70.36%, avg_specificity=88.48% avg_auc=0.8947
+Best model saved!!!!
+Fold[3] Epoch: 6 [6/300 (2%)] Train loss=0.519467 Test loss=0.418943
+
+[0/12] Train loss=0.4663826525211334
+[5/12] Train loss=0.4879639744758606
+[10/12] Train loss=0.42647358775138855
+Test set avg_accuracy=83.23% avg_sensitivity=74.77%, avg_specificity=86.98% avg_auc=0.9002
+Best model saved!!!!
+Fold[3] Epoch: 7 [7/300 (2%)] Train loss=0.478930 Test loss=0.396401
+
+[0/12] Train loss=0.4227867126464844
+[5/12] Train loss=0.4537079334259033
+[10/12] Train loss=0.3675951659679413
+Test set avg_accuracy=83.04% avg_sensitivity=68.99%, avg_specificity=89.27% avg_auc=0.8900
+Fold[3] Epoch: 8 [8/300 (3%)] Train loss=0.429286 Test loss=0.423955
+
+[0/12] Train loss=0.40799328684806824
+[5/12] Train loss=0.3758389949798584
+[10/12] Train loss=0.3584234118461609
+Test set avg_accuracy=82.75% avg_sensitivity=76.52%, avg_specificity=85.51% avg_auc=0.8994
+Fold[3] Epoch: 9 [9/300 (3%)] Train loss=0.401403 Test loss=0.469963
+
+[0/12] Train loss=0.3760981261730194
+[5/12] Train loss=0.35582175850868225
+[10/12] Train loss=0.32659873366355896
+Test set avg_accuracy=83.24% avg_sensitivity=63.49%, avg_specificity=92.01% avg_auc=0.8959
+Fold[3] Epoch: 10 [10/300 (3%)] Train loss=0.370423 Test loss=0.496704
+
+[0/12] Train loss=0.3647023141384125
+[5/12] Train loss=0.33312198519706726
+[10/12] Train loss=0.29429590702056885
+Test set avg_accuracy=80.54% avg_sensitivity=47.72%, avg_specificity=95.10% avg_auc=0.8657
+Fold[3] Epoch: 11 [11/300 (4%)] Train loss=0.329494 Test loss=0.674029
+
+[0/12] Train loss=0.3814716339111328
+[5/12] Train loss=0.322162002325058
+[10/12] Train loss=0.34546273946762085
+Test set avg_accuracy=82.57% avg_sensitivity=70.08%, avg_specificity=88.12% avg_auc=0.8921
+Fold[3] Epoch: 12 [12/300 (4%)] Train loss=0.337875 Test loss=0.494516
+
+[0/12] Train loss=0.2928607165813446
+[5/12] Train loss=0.3539709150791168
+[10/12] Train loss=0.2955608665943146
+Test set avg_accuracy=82.48% avg_sensitivity=73.02%, avg_specificity=86.67% avg_auc=0.8902
+Fold[3] Epoch: 13 [13/300 (4%)] Train loss=0.326597 Test loss=0.465561
+
+[0/12] Train loss=0.29871079325675964
+[5/12] Train loss=0.2595747411251068
+[10/12] Train loss=0.26647040247917175
+Test set avg_accuracy=82.68% avg_sensitivity=65.63%, avg_specificity=90.25% avg_auc=0.8824
+Fold[3] Epoch: 14 [14/300 (5%)] Train loss=0.278605 Test loss=0.499287
+
+[0/12] Train loss=0.2743896543979645
+[5/12] Train loss=0.2551915943622589
+[10/12] Train loss=0.2049008011817932
+Test set avg_accuracy=82.82% avg_sensitivity=63.88%, avg_specificity=91.23% avg_auc=0.8729
+Fold[3] Epoch: 15 [15/300 (5%)] Train loss=0.249119 Test loss=0.558827
+
+[0/12] Train loss=0.2410047948360443
+[5/12] Train loss=0.19134820997714996
+[10/12] Train loss=0.17637871205806732
+Test set avg_accuracy=83.03% avg_sensitivity=65.59%, avg_specificity=90.76% avg_auc=0.8833
+Fold[3] Epoch: 16 [16/300 (5%)] Train loss=0.209776 Test loss=0.565733
+
+[0/12] Train loss=0.23030050098896027
+[5/12] Train loss=0.18879321217536926
+[10/12] Train loss=0.16680112481117249
+Test set avg_accuracy=83.65% avg_sensitivity=69.52%, avg_specificity=89.92% avg_auc=0.8965
+Fold[3] Epoch: 17 [17/300 (6%)] Train loss=0.181322 Test loss=0.606742
+
+[0/12] Train loss=0.1849539577960968
+[5/12] Train loss=0.1724446564912796
+[10/12] Train loss=0.15770629048347473
+Test set avg_accuracy=82.85% avg_sensitivity=71.86%, avg_specificity=87.73% avg_auc=0.8975
+Fold[3] Epoch: 18 [18/300 (6%)] Train loss=0.185145 Test loss=0.578974
+
+[0/12] Train loss=0.17034271359443665
+[5/12] Train loss=0.1747000366449356
+[10/12] Train loss=0.1230521947145462
+Test set avg_accuracy=82.15% avg_sensitivity=64.51%, avg_specificity=89.99% avg_auc=0.8860
+Fold[3] Epoch: 19 [19/300 (6%)] Train loss=0.164329 Test loss=0.610086
+
+[0/12] Train loss=0.17008773982524872
+[5/12] Train loss=0.12072838842868805
+[10/12] Train loss=0.13867446780204773
+Test set avg_accuracy=83.25% avg_sensitivity=66.50%, avg_specificity=90.69% avg_auc=0.8894
+Fold[3] Epoch: 20 [20/300 (7%)] Train loss=0.145377 Test loss=0.618269
+
+[0/12] Train loss=0.13002435863018036
+[5/12] Train loss=0.11680673807859421
+[10/12] Train loss=0.10211478918790817
+Test set avg_accuracy=83.38% avg_sensitivity=65.77%, avg_specificity=91.20% avg_auc=0.8868
+Fold[3] Epoch: 21 [21/300 (7%)] Train loss=0.110825 Test loss=0.692518
+
+[0/12] Train loss=0.11640353500843048
+[5/12] Train loss=0.09550198912620544
+[10/12] Train loss=0.08857999742031097
+Test set avg_accuracy=83.49% avg_sensitivity=68.96%, avg_specificity=89.94% avg_auc=0.8872
+Fold[3] Epoch: 22 [22/300 (7%)] Train loss=0.103087 Test loss=0.627005
+
+[0/12] Train loss=0.10486382991075516
+[5/12] Train loss=0.08275936543941498
+[10/12] Train loss=0.08562418818473816
+Test set avg_accuracy=82.56% avg_sensitivity=72.35%, avg_specificity=87.09% avg_auc=0.8850
+Fold[3] Epoch: 23 [23/300 (8%)] Train loss=0.090078 Test loss=0.700890
+
+[0/12] Train loss=0.1087317019701004
+[5/12] Train loss=0.08716162294149399
+[10/12] Train loss=0.06901772320270538
+Test set avg_accuracy=82.78% avg_sensitivity=74.84%, avg_specificity=86.30% avg_auc=0.8891
+Fold[3] Epoch: 24 [24/300 (8%)] Train loss=0.091468 Test loss=0.746345
+
+[0/12] Train loss=0.10753940045833588
+[5/12] Train loss=0.07725735008716583
+[10/12] Train loss=0.08422780781984329
+Test set avg_accuracy=83.27% avg_sensitivity=72.70%, avg_specificity=87.96% avg_auc=0.8899
+Fold[3] Epoch: 25 [25/300 (8%)] Train loss=0.097782 Test loss=0.688296
+
+[0/12] Train loss=0.08010414987802505
+[5/12] Train loss=0.0782516598701477
+[10/12] Train loss=0.10750914365053177
+Test set avg_accuracy=83.10% avg_sensitivity=64.37%, avg_specificity=91.42% avg_auc=0.8903
+Fold[3] Epoch: 26 [26/300 (9%)] Train loss=0.089541 Test loss=0.726507
+
+[0/12] Train loss=0.11237113177776337
+[5/12] Train loss=0.100460484623909
+[10/12] Train loss=0.1283586025238037
+Test set avg_accuracy=82.49% avg_sensitivity=60.09%, avg_specificity=92.43% avg_auc=0.8897
+Fold[3] Epoch: 27 [27/300 (9%)] Train loss=0.098304 Test loss=0.739549
+
+Early Stopping!!! Best loss=0.39640089869499207
+Fold[3] Best Result: acc=83.23101777059773 sen=74.77224947442186, spe=86.98491680920542, auc=0.9002395326508982!
+[0/12] Train loss=1.4207582473754883
+[5/12] Train loss=0.9826368689537048
+[10/12] Train loss=0.8876274228096008
+Test set avg_accuracy=76.09% avg_sensitivity=19.32%, avg_specificity=96.64% avg_auc=0.8255
+Best model saved!!!!
+Fold[4] Epoch: 1 [1/300 (0%)] Train loss=1.364338 Test loss=0.545980
+
+[0/12] Train loss=0.7922686338424683
+[5/12] Train loss=0.821652889251709
+[10/12] Train loss=0.7400710582733154
+Test set avg_accuracy=82.46% avg_sensitivity=57.02%, avg_specificity=91.68% avg_auc=0.8696
+Best model saved!!!!
+Fold[4] Epoch: 2 [2/300 (1%)] Train loss=0.823155 Test loss=0.413800
+
+[0/12] Train loss=0.6836408376693726
+[5/12] Train loss=0.7279531359672546
+[10/12] Train loss=0.6432954668998718
+Test set avg_accuracy=84.10% avg_sensitivity=62.93%, avg_specificity=91.76% avg_auc=0.8908
+Best model saved!!!!
+Fold[4] Epoch: 3 [3/300 (1%)] Train loss=0.708076 Test loss=0.382799
+
+[0/12] Train loss=0.605340838432312
+[5/12] Train loss=0.6331173777580261
+[10/12] Train loss=0.5591955184936523
+Test set avg_accuracy=84.44% avg_sensitivity=69.91%, avg_specificity=89.71% avg_auc=0.8958
+Best model saved!!!!
+Fold[4] Epoch: 4 [4/300 (1%)] Train loss=0.626123 Test loss=0.381863
+
+[0/12] Train loss=0.582848846912384
+[5/12] Train loss=0.5886300802230835
+[10/12] Train loss=0.5056039094924927
+Test set avg_accuracy=84.37% avg_sensitivity=67.71%, avg_specificity=90.41% avg_auc=0.8978
+Fold[4] Epoch: 5 [5/300 (2%)] Train loss=0.571401 Test loss=0.388269
+
+[0/12] Train loss=0.5406373143196106
+[5/12] Train loss=0.5256450772285461
+[10/12] Train loss=0.47865742444992065
+Test set avg_accuracy=84.45% avg_sensitivity=69.09%, avg_specificity=90.02% avg_auc=0.9039
+Best model saved!!!!
+Fold[4] Epoch: 6 [6/300 (2%)] Train loss=0.524335 Test loss=0.381670
+
+[0/12] Train loss=0.4942706525325775
+[5/12] Train loss=0.4883642792701721
+[10/12] Train loss=0.4339742064476013
+Test set avg_accuracy=84.09% avg_sensitivity=67.51%, avg_specificity=90.09% avg_auc=0.8984
+Fold[4] Epoch: 7 [7/300 (2%)] Train loss=0.479606 Test loss=0.423320
+
+[0/12] Train loss=0.4635554850101471
+[5/12] Train loss=0.4682987928390503
+[10/12] Train loss=0.38517865538597107
+Test set avg_accuracy=84.71% avg_sensitivity=74.09%, avg_specificity=88.55% avg_auc=0.9048
+Best model saved!!!!
+Fold[4] Epoch: 8 [8/300 (3%)] Train loss=0.440501 Test loss=0.422459
+
+[0/12] Train loss=0.38070884346961975
+[5/12] Train loss=0.4547542929649353
+[10/12] Train loss=0.35626477003097534
+Test set avg_accuracy=85.42% avg_sensitivity=73.70%, avg_specificity=89.66% avg_auc=0.9061
+Best model saved!!!!
+Fold[4] Epoch: 9 [9/300 (3%)] Train loss=0.391014 Test loss=0.429913
+
+[0/12] Train loss=0.3878970444202423
+[5/12] Train loss=0.4050903916358948
+[10/12] Train loss=0.3155442774295807
+Test set avg_accuracy=84.85% avg_sensitivity=69.79%, avg_specificity=90.31% avg_auc=0.9036
+Fold[4] Epoch: 10 [10/300 (3%)] Train loss=0.371759 Test loss=0.447417
+
+[0/12] Train loss=0.3777582049369812
+[5/12] Train loss=0.3558744192123413
+[10/12] Train loss=0.33128678798675537
+Test set avg_accuracy=85.10% avg_sensitivity=62.42%, avg_specificity=93.32% avg_auc=0.8994
+Fold[4] Epoch: 11 [11/300 (4%)] Train loss=0.339580 Test loss=0.454410
+
+[0/12] Train loss=0.31932562589645386
+[5/12] Train loss=0.34718260169029236
+[10/12] Train loss=0.2585010528564453
+Test set avg_accuracy=85.15% avg_sensitivity=70.43%, avg_specificity=90.48% avg_auc=0.9068
+Fold[4] Epoch: 12 [12/300 (4%)] Train loss=0.330701 Test loss=0.476371
+
+[0/12] Train loss=0.34958815574645996
+[5/12] Train loss=0.33716994524002075
+[10/12] Train loss=0.28372713923454285
+Test set avg_accuracy=84.60% avg_sensitivity=74.41%, avg_specificity=88.29% avg_auc=0.9079
+Fold[4] Epoch: 13 [13/300 (4%)] Train loss=0.325398 Test loss=0.412471
+
+[0/12] Train loss=0.2910640239715576
+[5/12] Train loss=0.29042789340019226
+[10/12] Train loss=0.23007600009441376
+Test set avg_accuracy=84.21% avg_sensitivity=56.94%, avg_specificity=94.09% avg_auc=0.8933
+Fold[4] Epoch: 14 [14/300 (5%)] Train loss=0.281896 Test loss=0.471653
+
+[0/12] Train loss=0.2750084698200226
+[5/12] Train loss=0.22040554881095886
+[10/12] Train loss=0.23493178188800812
+Test set avg_accuracy=85.63% avg_sensitivity=69.24%, avg_specificity=91.56% avg_auc=0.9071
+Fold[4] Epoch: 15 [15/300 (5%)] Train loss=0.250892 Test loss=0.499512
+
+[0/12] Train loss=0.24339599907398224
+[5/12] Train loss=0.27580347657203674
+[10/12] Train loss=0.17386001348495483
+Test set avg_accuracy=84.22% avg_sensitivity=72.95%, avg_specificity=88.31% avg_auc=0.9018
+Fold[4] Epoch: 16 [16/300 (5%)] Train loss=0.222699 Test loss=0.586625
+
+[0/12] Train loss=0.3040085732936859
+[5/12] Train loss=0.1986599862575531
+[10/12] Train loss=0.21197108924388885
+Test set avg_accuracy=85.91% avg_sensitivity=68.69%, avg_specificity=92.15% avg_auc=0.9104
+Fold[4] Epoch: 17 [17/300 (6%)] Train loss=0.226533 Test loss=0.514043
+
+[0/12] Train loss=0.21394479274749756
+[5/12] Train loss=0.2056303173303604
+[10/12] Train loss=0.18395383656024933
+Test set avg_accuracy=85.31% avg_sensitivity=69.99%, avg_specificity=90.86% avg_auc=0.9092
+Fold[4] Epoch: 18 [18/300 (6%)] Train loss=0.194704 Test loss=0.509390
+
+[0/12] Train loss=0.19394205510616302
+[5/12] Train loss=0.1849961131811142
+[10/12] Train loss=0.19048543274402618
+Test set avg_accuracy=83.50% avg_sensitivity=79.46%, avg_specificity=84.97% avg_auc=0.9047
+Fold[4] Epoch: 19 [19/300 (6%)] Train loss=0.173907 Test loss=0.696434
+
+[0/12] Train loss=0.22974282503128052
+[5/12] Train loss=0.17558526992797852
+[10/12] Train loss=0.13048020005226135
+Test set avg_accuracy=84.35% avg_sensitivity=78.08%, avg_specificity=86.62% avg_auc=0.9073
+Best model saved!!!!
+Fold[4] Epoch: 20 [20/300 (7%)] Train loss=0.174743 Test loss=0.647252
+
+[0/12] Train loss=0.1812884509563446
+[5/12] Train loss=0.1372021585702896
+[10/12] Train loss=0.15862558782100677
+Test set avg_accuracy=84.79% avg_sensitivity=73.42%, avg_specificity=88.91% avg_auc=0.8982
+Fold[4] Epoch: 21 [21/300 (7%)] Train loss=0.167174 Test loss=0.595082
+
+[0/12] Train loss=0.1639239490032196
+[5/12] Train loss=0.13969828188419342
+[10/12] Train loss=0.12492536753416061
+Test set avg_accuracy=83.88% avg_sensitivity=74.01%, avg_specificity=87.45% avg_auc=0.8911
+Fold[4] Epoch: 22 [22/300 (7%)] Train loss=0.142330 Test loss=0.613257
+
+[0/12] Train loss=0.18240956962108612
+[5/12] Train loss=0.09697410464286804
+[10/12] Train loss=0.10941237956285477
+Test set avg_accuracy=85.37% avg_sensitivity=66.48%, avg_specificity=92.20% avg_auc=0.9054
+Fold[4] Epoch: 23 [23/300 (8%)] Train loss=0.131670 Test loss=0.595098
+
+[0/12] Train loss=0.10210433602333069
+[5/12] Train loss=0.09983441978693008
+[10/12] Train loss=0.06861501932144165
+Test set avg_accuracy=85.49% avg_sensitivity=64.43%, avg_specificity=93.12% avg_auc=0.9080
+Fold[4] Epoch: 24 [24/300 (8%)] Train loss=0.088887 Test loss=0.624630
+
+[0/12] Train loss=0.10501422733068466
+[5/12] Train loss=0.057754553854465485
+[10/12] Train loss=0.06820490211248398
+Test set avg_accuracy=85.57% avg_sensitivity=72.12%, avg_specificity=90.43% avg_auc=0.9046
+Fold[4] Epoch: 25 [25/300 (8%)] Train loss=0.078755 Test loss=0.662503
+
+[0/12] Train loss=0.05790460482239723
+[5/12] Train loss=0.06708468496799469
+[10/12] Train loss=0.04385599121451378
+Test set avg_accuracy=85.50% avg_sensitivity=73.19%, avg_specificity=89.96% avg_auc=0.9088
+Fold[4] Epoch: 26 [26/300 (9%)] Train loss=0.056204 Test loss=0.675398
+
+Early Stopping!!! Best loss=0.3816704750061035
+Fold[4] Best Result: acc=84.35010482180294 sen=78.07570977917982, spe=86.62193032552827, auc=0.907288557057076!
+[0/12] Train loss=1.4203276634216309
+[5/12] Train loss=1.0646593570709229
+[10/12] Train loss=0.8853911757469177
+Test set avg_accuracy=81.94% avg_sensitivity=69.50%, avg_specificity=85.83% avg_auc=0.8663
+Best model saved!!!!
+Fold[5] Epoch: 1 [1/300 (0%)] Train loss=1.437751 Test loss=0.393399
+
+[0/12] Train loss=0.8046829700469971
+[5/12] Train loss=0.910889744758606
+[10/12] Train loss=0.7508801221847534
+Test set avg_accuracy=83.32% avg_sensitivity=69.64%, avg_specificity=87.60% avg_auc=0.8851
+Best model saved!!!!
+Fold[5] Epoch: 2 [2/300 (1%)] Train loss=0.875177 Test loss=0.366251
+
+[0/12] Train loss=0.7327064871788025
+[5/12] Train loss=0.7947725653648376
+[10/12] Train loss=0.668768048286438
+Test set avg_accuracy=85.64% avg_sensitivity=70.52%, avg_specificity=90.37% avg_auc=0.9031
+Best model saved!!!!
+Fold[5] Epoch: 3 [3/300 (1%)] Train loss=0.768961 Test loss=0.328240
+
+[0/12] Train loss=0.6616674661636353
+[5/12] Train loss=0.7709600329399109
+[10/12] Train loss=0.590537428855896
+Test set avg_accuracy=86.21% avg_sensitivity=71.19%, avg_specificity=90.91% avg_auc=0.9163
+Best model saved!!!!
+Fold[5] Epoch: 4 [4/300 (1%)] Train loss=0.695373 Test loss=0.304798
+
+[0/12] Train loss=0.5942627787590027
+[5/12] Train loss=0.6246642470359802
+[10/12] Train loss=0.5454712510108948
+Test set avg_accuracy=87.45% avg_sensitivity=78.59%, avg_specificity=90.21% avg_auc=0.9326
+Best model saved!!!!
+Fold[5] Epoch: 5 [5/300 (2%)] Train loss=0.624782 Test loss=0.281886
+
+[0/12] Train loss=0.5561641454696655
+[5/12] Train loss=0.6149817109107971
+[10/12] Train loss=0.5150925517082214
+Test set avg_accuracy=87.30% avg_sensitivity=80.32%, avg_specificity=89.48% avg_auc=0.9349
+Best model saved!!!!
+Fold[5] Epoch: 6 [6/300 (2%)] Train loss=0.590854 Test loss=0.284847
+
+[0/12] Train loss=0.5272709727287292
+[5/12] Train loss=0.5691635012626648
+[10/12] Train loss=0.48200419545173645
+Test set avg_accuracy=87.47% avg_sensitivity=77.30%, avg_specificity=90.64% avg_auc=0.9305
+Fold[5] Epoch: 7 [7/300 (2%)] Train loss=0.534951 Test loss=0.286194
+
+[0/12] Train loss=0.50663161277771
+[5/12] Train loss=0.5586100816726685
+[10/12] Train loss=0.43430477380752563
+Test set avg_accuracy=87.11% avg_sensitivity=78.99%, avg_specificity=89.65% avg_auc=0.9282
+Fold[5] Epoch: 8 [8/300 (3%)] Train loss=0.503961 Test loss=0.299131
+
+[0/12] Train loss=0.48324427008628845
+[5/12] Train loss=0.5469112396240234
+[10/12] Train loss=0.4628694951534271
+Test set avg_accuracy=86.47% avg_sensitivity=79.57%, avg_specificity=88.62% avg_auc=0.9258
+Fold[5] Epoch: 9 [9/300 (3%)] Train loss=0.508663 Test loss=0.322218
+
+[0/12] Train loss=0.45666617155075073
+[5/12] Train loss=0.4765903353691101
+[10/12] Train loss=0.3648703992366791
+Test set avg_accuracy=87.00% avg_sensitivity=63.79%, avg_specificity=94.26% avg_auc=0.9135
+Fold[5] Epoch: 10 [10/300 (3%)] Train loss=0.452764 Test loss=0.354184
+
+[0/12] Train loss=0.5035802721977234
+[5/12] Train loss=0.4630628526210785
+[10/12] Train loss=0.35267654061317444
+Test set avg_accuracy=87.39% avg_sensitivity=67.15%, avg_specificity=93.72% avg_auc=0.9178
+Fold[5] Epoch: 11 [11/300 (4%)] Train loss=0.430105 Test loss=0.320585
+
+[0/12] Train loss=0.4211215674877167
+[5/12] Train loss=0.4657096564769745
+[10/12] Train loss=0.36876577138900757
+Test set avg_accuracy=86.04% avg_sensitivity=74.25%, avg_specificity=89.73% avg_auc=0.9183
+Fold[5] Epoch: 12 [12/300 (4%)] Train loss=0.440686 Test loss=0.315667
+
+[0/12] Train loss=0.4143810272216797
+[5/12] Train loss=0.3768158555030823
+[10/12] Train loss=0.33965161442756653
+Test set avg_accuracy=86.97% avg_sensitivity=75.40%, avg_specificity=90.59% avg_auc=0.9225
+Fold[5] Epoch: 13 [13/300 (4%)] Train loss=0.393243 Test loss=0.343575
+
+[0/12] Train loss=0.37810927629470825
+[5/12] Train loss=0.37350133061408997
+[10/12] Train loss=0.3254738748073578
+Test set avg_accuracy=86.77% avg_sensitivity=76.99%, avg_specificity=89.83% avg_auc=0.9267
+Fold[5] Epoch: 14 [14/300 (5%)] Train loss=0.365419 Test loss=0.341151
+
+[0/12] Train loss=0.3149806261062622
+[5/12] Train loss=0.3213014304637909
+[10/12] Train loss=0.3522297143936157
+Test set avg_accuracy=83.33% avg_sensitivity=83.47%, avg_specificity=83.29% avg_auc=0.9219
+Fold[5] Epoch: 15 [15/300 (5%)] Train loss=0.363366 Test loss=0.412617
+
+[0/12] Train loss=0.31544360518455505
+[5/12] Train loss=0.3256891965866089
+[10/12] Train loss=0.2936308979988098
+Test set avg_accuracy=84.57% avg_sensitivity=85.64%, avg_specificity=84.23% avg_auc=0.9278
+Fold[5] Epoch: 16 [16/300 (5%)] Train loss=0.316426 Test loss=0.432265
+
+[0/12] Train loss=0.34356340765953064
+[5/12] Train loss=0.2584819197654724
+[10/12] Train loss=0.2513323724269867
+Test set avg_accuracy=83.50% avg_sensitivity=86.08%, avg_specificity=82.70% avg_auc=0.9248
+Fold[5] Epoch: 17 [17/300 (6%)] Train loss=0.293767 Test loss=0.504234
+
+[0/12] Train loss=0.3138662576675415
+[5/12] Train loss=0.22979219257831573
+[10/12] Train loss=0.2192813903093338
+Test set avg_accuracy=84.26% avg_sensitivity=83.60%, avg_specificity=84.47% avg_auc=0.9248
+Fold[5] Epoch: 18 [18/300 (6%)] Train loss=0.256325 Test loss=0.465465
+
+[0/12] Train loss=0.2470426708459854
+[5/12] Train loss=0.21160826086997986
+[10/12] Train loss=0.1968885362148285
+Test set avg_accuracy=86.64% avg_sensitivity=80.14%, avg_specificity=88.66% avg_auc=0.9238
+Fold[5] Epoch: 19 [19/300 (6%)] Train loss=0.231067 Test loss=0.381433
+
+[0/12] Train loss=0.22441306710243225
+[5/12] Train loss=0.20589345693588257
+[10/12] Train loss=0.15003645420074463
+Test set avg_accuracy=87.90% avg_sensitivity=71.54%, avg_specificity=93.01% avg_auc=0.9176
+Fold[5] Epoch: 20 [20/300 (7%)] Train loss=0.192290 Test loss=0.389846
+
+[0/12] Train loss=0.24028520286083221
+[5/12] Train loss=0.15931157767772675
+[10/12] Train loss=0.14309218525886536
+Test set avg_accuracy=87.08% avg_sensitivity=78.72%, avg_specificity=89.69% avg_auc=0.9258
+Fold[5] Epoch: 21 [21/300 (7%)] Train loss=0.172278 Test loss=0.409139
+
+[0/12] Train loss=0.14271964132785797
+[5/12] Train loss=0.1307087540626526
+[10/12] Train loss=0.09101605415344238
+Test set avg_accuracy=85.45% avg_sensitivity=80.94%, avg_specificity=86.86% avg_auc=0.9229
+Fold[5] Epoch: 22 [22/300 (7%)] Train loss=0.129608 Test loss=0.473654
+
+[0/12] Train loss=0.1326642483472824
+[5/12] Train loss=0.10842981189489365
+[10/12] Train loss=0.08613898605108261
+Test set avg_accuracy=87.03% avg_sensitivity=78.72%, avg_specificity=89.62% avg_auc=0.9242
+Fold[5] Epoch: 23 [23/300 (8%)] Train loss=0.108328 Test loss=0.420879
+
+[0/12] Train loss=0.10969366133213043
+[5/12] Train loss=0.07813917100429535
+[10/12] Train loss=0.05737192928791046
+Test set avg_accuracy=86.66% avg_sensitivity=78.72%, avg_specificity=89.13% avg_auc=0.9233
+Fold[5] Epoch: 24 [24/300 (8%)] Train loss=0.083506 Test loss=0.475246
+
+[0/12] Train loss=0.07765059173107147
+[5/12] Train loss=0.05765538662672043
+[10/12] Train loss=0.05740686506032944
+Test set avg_accuracy=87.93% avg_sensitivity=75.89%, avg_specificity=91.69% avg_auc=0.9244
+Fold[5] Epoch: 25 [25/300 (8%)] Train loss=0.066304 Test loss=0.462184
+
+Early Stopping!!! Best loss=0.2818862199783325
+Fold[5] Best Result: acc=87.29957805907172 sen=80.31914893617021, spe=89.4795127353267, auc=0.934944430208996!
+[0/12] Train loss=1.4159495830535889
+[5/12] Train loss=1.0824341773986816
+[10/12] Train loss=0.8675111532211304
+Test set avg_accuracy=80.50% avg_sensitivity=38.09%, avg_specificity=94.73% avg_auc=0.8528
+Best model saved!!!!
+Fold[6] Epoch: 1 [1/300 (0%)] Train loss=1.376219 Test loss=0.448050
+
+[0/12] Train loss=0.7864634394645691
+[5/12] Train loss=0.8924223184585571
+[10/12] Train loss=0.741869330406189
+Test set avg_accuracy=83.10% avg_sensitivity=54.59%, avg_specificity=92.67% avg_auc=0.8790
+Best model saved!!!!
+Fold[6] Epoch: 2 [2/300 (1%)] Train loss=0.844298 Test loss=0.378669
+
+[0/12] Train loss=0.6871589422225952
+[5/12] Train loss=0.8480628728866577
+[10/12] Train loss=0.6536006331443787
+Test set avg_accuracy=85.56% avg_sensitivity=70.00%, avg_specificity=90.78% avg_auc=0.8997
+Best model saved!!!!
+Fold[6] Epoch: 3 [3/300 (1%)] Train loss=0.755758 Test loss=0.341316
+
+[0/12] Train loss=0.6183193325996399
+[5/12] Train loss=0.695403516292572
+[10/12] Train loss=0.5998570322990417
+Test set avg_accuracy=86.40% avg_sensitivity=72.37%, avg_specificity=91.11% avg_auc=0.9091
+Best model saved!!!!
+Fold[6] Epoch: 4 [4/300 (1%)] Train loss=0.680550 Test loss=0.332418
+
+[0/12] Train loss=0.5954622030258179
+[5/12] Train loss=0.6062201261520386
+[10/12] Train loss=0.5348175764083862
+Test set avg_accuracy=87.72% avg_sensitivity=70.46%, avg_specificity=93.51% avg_auc=0.9174
+Best model saved!!!!
+Fold[6] Epoch: 5 [5/300 (2%)] Train loss=0.608986 Test loss=0.314069
+
+[0/12] Train loss=0.5605233311653137
+[5/12] Train loss=0.5854313373565674
+[10/12] Train loss=0.48700854182243347
+Test set avg_accuracy=87.73% avg_sensitivity=69.87%, avg_specificity=93.72% avg_auc=0.9200
+Fold[6] Epoch: 6 [6/300 (2%)] Train loss=0.557894 Test loss=0.317289
+
+[0/12] Train loss=0.5224682688713074
+[5/12] Train loss=0.5057178139686584
+[10/12] Train loss=0.4460557997226715
+Test set avg_accuracy=88.06% avg_sensitivity=69.57%, avg_specificity=94.26% avg_auc=0.9239
+Best model saved!!!!
+Fold[6] Epoch: 7 [7/300 (2%)] Train loss=0.507427 Test loss=0.311167
+
+[0/12] Train loss=0.48074445128440857
+[5/12] Train loss=0.46583291888237
+[10/12] Train loss=0.40413278341293335
+Test set avg_accuracy=87.22% avg_sensitivity=68.09%, avg_specificity=93.64% avg_auc=0.9186
+Fold[6] Epoch: 8 [8/300 (3%)] Train loss=0.469284 Test loss=0.344698
+
+[0/12] Train loss=0.4857763350009918
+[5/12] Train loss=0.4819759130477905
+[10/12] Train loss=0.36934083700180054
+Test set avg_accuracy=88.58% avg_sensitivity=71.14%, avg_specificity=94.43% avg_auc=0.9280
+Best model saved!!!!
+Fold[6] Epoch: 9 [9/300 (3%)] Train loss=0.444826 Test loss=0.348837
+
+[0/12] Train loss=0.39488348364830017
+[5/12] Train loss=0.4693041443824768
+[10/12] Train loss=0.3835503160953522
+Test set avg_accuracy=86.85% avg_sensitivity=65.51%, avg_specificity=94.01% avg_auc=0.9157
+Fold[6] Epoch: 10 [10/300 (3%)] Train loss=0.441766 Test loss=0.359693
+
+[0/12] Train loss=0.3888084888458252
+[5/12] Train loss=0.4025164842605591
+[10/12] Train loss=0.35478752851486206
+Test set avg_accuracy=86.96% avg_sensitivity=66.91%, avg_specificity=93.69% avg_auc=0.9124
+Fold[6] Epoch: 11 [11/300 (4%)] Train loss=0.406143 Test loss=0.348163
+
+[0/12] Train loss=0.4136987626552582
+[5/12] Train loss=0.38845884799957275
+[10/12] Train loss=0.3586210310459137
+Test set avg_accuracy=86.37% avg_sensitivity=62.59%, avg_specificity=94.35% avg_auc=0.9034
+Fold[6] Epoch: 12 [12/300 (4%)] Train loss=0.373324 Test loss=0.377586
+
+[0/12] Train loss=0.3657758831977844
+[5/12] Train loss=0.34447675943374634
+[10/12] Train loss=0.36465930938720703
+Test set avg_accuracy=85.24% avg_sensitivity=55.61%, avg_specificity=95.19% avg_auc=0.9016
+Fold[6] Epoch: 13 [13/300 (4%)] Train loss=0.370976 Test loss=0.437662
+
+[0/12] Train loss=0.37031495571136475
+[5/12] Train loss=0.31940993666648865
+[10/12] Train loss=0.32724177837371826
+Test set avg_accuracy=87.38% avg_sensitivity=76.39%, avg_specificity=91.07% avg_auc=0.9226
+Best model saved!!!!
+Fold[6] Epoch: 14 [14/300 (5%)] Train loss=0.351864 Test loss=0.350759
+
+[0/12] Train loss=0.37980231642723083
+[5/12] Train loss=0.3039841055870056
+[10/12] Train loss=0.29607564210891724
+Test set avg_accuracy=85.67% avg_sensitivity=82.14%, avg_specificity=86.85% avg_auc=0.9240
+Fold[6] Epoch: 15 [15/300 (5%)] Train loss=0.302682 Test loss=0.431207
+
+[0/12] Train loss=0.317211776971817
+[5/12] Train loss=0.26644858717918396
+[10/12] Train loss=0.266129732131958
+Test set avg_accuracy=85.62% avg_sensitivity=83.50%, avg_specificity=86.34% avg_auc=0.9238
+Best model saved!!!!
+Fold[6] Epoch: 16 [16/300 (5%)] Train loss=0.266371 Test loss=0.470521
+
+[0/12] Train loss=0.288508802652359
+[5/12] Train loss=0.2946813702583313
+[10/12] Train loss=0.23276075720787048
+Test set avg_accuracy=83.60% avg_sensitivity=85.27%, avg_specificity=83.04% avg_auc=0.9199
+Fold[6] Epoch: 17 [17/300 (6%)] Train loss=0.254231 Test loss=0.507070
+
+[0/12] Train loss=0.27569204568862915
+[5/12] Train loss=0.24444197118282318
+[10/12] Train loss=0.17975519597530365
+Test set avg_accuracy=84.84% avg_sensitivity=82.65%, avg_specificity=85.57% avg_auc=0.9187
+Fold[6] Epoch: 18 [18/300 (6%)] Train loss=0.240462 Test loss=0.422487
+
+[0/12] Train loss=0.2272942215204239
+[5/12] Train loss=0.23121504485607147
+[10/12] Train loss=0.20327457785606384
+Test set avg_accuracy=87.85% avg_sensitivity=72.58%, avg_specificity=92.97% avg_auc=0.9216
+Fold[6] Epoch: 19 [19/300 (6%)] Train loss=0.209465 Test loss=0.446832
+
+[0/12] Train loss=0.20538361370563507
+[5/12] Train loss=0.16423824429512024
+[10/12] Train loss=0.12245843559503555
+Test set avg_accuracy=87.60% avg_sensitivity=69.11%, avg_specificity=93.81% avg_auc=0.9211
+Fold[6] Epoch: 20 [20/300 (7%)] Train loss=0.162382 Test loss=0.397863
+
+[0/12] Train loss=0.17054897546768188
+[5/12] Train loss=0.11215032637119293
+[10/12] Train loss=0.11287946254014969
+Test set avg_accuracy=87.81% avg_sensitivity=76.01%, avg_specificity=91.78% avg_auc=0.9261
+Best model saved!!!!
+Fold[6] Epoch: 21 [21/300 (7%)] Train loss=0.144314 Test loss=0.453157
+
+[0/12] Train loss=0.13677668571472168
+[5/12] Train loss=0.1291656494140625
+[10/12] Train loss=0.09363618493080139
+Test set avg_accuracy=87.05% avg_sensitivity=77.53%, avg_specificity=90.24% avg_auc=0.9231
+Fold[6] Epoch: 22 [22/300 (7%)] Train loss=0.113247 Test loss=0.448017
+
+[0/12] Train loss=0.118288554251194
+[5/12] Train loss=0.09597298502922058
+[10/12] Train loss=0.08032653480768204
+Test set avg_accuracy=88.05% avg_sensitivity=75.45%, avg_specificity=92.27% avg_auc=0.9280
+Best model saved!!!!
+Fold[6] Epoch: 23 [23/300 (8%)] Train loss=0.095708 Test loss=0.421668
+
+[0/12] Train loss=0.0812981054186821
+[5/12] Train loss=0.08908738195896149
+[10/12] Train loss=0.06796450167894363
+Test set avg_accuracy=87.76% avg_sensitivity=76.22%, avg_specificity=91.64% avg_auc=0.9240
+Fold[6] Epoch: 24 [24/300 (8%)] Train loss=0.074779 Test loss=0.482354
+
+[0/12] Train loss=0.07239913195371628
+[5/12] Train loss=0.06174027547240257
+[10/12] Train loss=0.04691357910633087
+Test set avg_accuracy=87.18% avg_sensitivity=78.88%, avg_specificity=89.96% avg_auc=0.9235
+Fold[6] Epoch: 25 [25/300 (8%)] Train loss=0.064368 Test loss=0.496617
+
+[0/12] Train loss=0.06067981198430061
+[5/12] Train loss=0.0571858212351799
+[10/12] Train loss=0.05558905750513077
+Test set avg_accuracy=88.41% avg_sensitivity=74.82%, avg_specificity=92.97% avg_auc=0.9243
+Best model saved!!!!
+Fold[6] Epoch: 26 [26/300 (9%)] Train loss=0.057975 Test loss=0.498580
+
+[0/12] Train loss=0.057521797716617584
+[5/12] Train loss=0.047143932431936264
+[10/12] Train loss=0.039130304008722305
+Test set avg_accuracy=88.27% avg_sensitivity=73.17%, avg_specificity=93.34% avg_auc=0.9220
+Fold[6] Epoch: 27 [27/300 (9%)] Train loss=0.051517 Test loss=0.505452
+
+Early Stopping!!! Best loss=0.3111671805381775
+Fold[6] Best Result: acc=88.41041998936736 sen=74.82014388489209, spe=92.97074694689009, auc=0.9242567988478055!
+[0/12] Train loss=1.4193066358566284
+[5/12] Train loss=1.2838412523269653
+[10/12] Train loss=0.9293447136878967
+Test set avg_accuracy=78.30% avg_sensitivity=10.90%, avg_specificity=98.92% avg_auc=0.8245
+Best model saved!!!!
+Fold[7] Epoch: 1 [1/300 (0%)] Train loss=1.808181 Test loss=0.508218
+
+[0/12] Train loss=0.8869757652282715
+[5/12] Train loss=0.8928987979888916
+[10/12] Train loss=0.8086524605751038
+Test set avg_accuracy=84.22% avg_sensitivity=64.30%, avg_specificity=90.31% avg_auc=0.8839
+Best model saved!!!!
+Fold[7] Epoch: 2 [2/300 (1%)] Train loss=0.892405 Test loss=0.353393
+
+[0/12] Train loss=0.7648314237594604
+[5/12] Train loss=0.8043065071105957
+[10/12] Train loss=0.6663349270820618
+Test set avg_accuracy=87.71% avg_sensitivity=70.36%, avg_specificity=93.01% avg_auc=0.9115
+Best model saved!!!!
+Fold[7] Epoch: 3 [3/300 (1%)] Train loss=0.774740 Test loss=0.313163
+
+[0/12] Train loss=0.6718851327896118
+[5/12] Train loss=0.735679566860199
+[10/12] Train loss=0.5926914811134338
+Test set avg_accuracy=87.71% avg_sensitivity=73.53%, avg_specificity=92.04% avg_auc=0.9181
+Best model saved!!!!
+Fold[7] Epoch: 4 [4/300 (1%)] Train loss=0.709767 Test loss=0.309900
+
+[0/12] Train loss=0.6056056618690491
+[5/12] Train loss=0.6656571626663208
+[10/12] Train loss=0.5630894899368286
+Test set avg_accuracy=88.69% avg_sensitivity=74.66%, avg_specificity=92.98% avg_auc=0.9297
+Best model saved!!!!
+Fold[7] Epoch: 5 [5/300 (2%)] Train loss=0.650501 Test loss=0.283637
+
+[0/12] Train loss=0.5669639110565186
+[5/12] Train loss=0.5763047337532043
+[10/12] Train loss=0.5137950778007507
+Test set avg_accuracy=89.30% avg_sensitivity=81.58%, avg_specificity=91.65% avg_auc=0.9382
+Best model saved!!!!
+Fold[7] Epoch: 6 [6/300 (2%)] Train loss=0.592894 Test loss=0.276567
+
+[0/12] Train loss=0.5029704570770264
+[5/12] Train loss=0.5059790015220642
+[10/12] Train loss=0.4837460517883301
+Test set avg_accuracy=89.14% avg_sensitivity=77.29%, avg_specificity=92.76% avg_auc=0.9364
+Fold[7] Epoch: 7 [7/300 (2%)] Train loss=0.536005 Test loss=0.277739
+
+[0/12] Train loss=0.4800158143043518
+[5/12] Train loss=0.49561405181884766
+[10/12] Train loss=0.44051840901374817
+Test set avg_accuracy=89.17% avg_sensitivity=81.45%, avg_specificity=91.53% avg_auc=0.9387
+Fold[7] Epoch: 8 [8/300 (3%)] Train loss=0.495476 Test loss=0.285541
+
+[0/12] Train loss=0.4562399685382843
+[5/12] Train loss=0.44670653343200684
+[10/12] Train loss=0.42606794834136963
+Test set avg_accuracy=88.64% avg_sensitivity=68.60%, avg_specificity=94.77% avg_auc=0.9241
+Fold[7] Epoch: 9 [9/300 (3%)] Train loss=0.467894 Test loss=0.310152
+
+[0/12] Train loss=0.45224034786224365
+[5/12] Train loss=0.43530914187431335
+[10/12] Train loss=0.4102891683578491
+Test set avg_accuracy=87.75% avg_sensitivity=61.81%, avg_specificity=95.68% avg_auc=0.9138
+Fold[7] Epoch: 10 [10/300 (3%)] Train loss=0.450568 Test loss=0.334556
+
+[0/12] Train loss=0.4514024257659912
+[5/12] Train loss=0.39411813020706177
+[10/12] Train loss=0.33570602536201477
+Test set avg_accuracy=89.32% avg_sensitivity=70.86%, avg_specificity=94.96% avg_auc=0.9286
+Fold[7] Epoch: 11 [11/300 (4%)] Train loss=0.400125 Test loss=0.332655
+
+[0/12] Train loss=0.45223268866539
+[5/12] Train loss=0.4419117271900177
+[10/12] Train loss=0.3199358582496643
+Test set avg_accuracy=88.98% avg_sensitivity=73.30%, avg_specificity=93.77% avg_auc=0.9304
+Fold[7] Epoch: 12 [12/300 (4%)] Train loss=0.394614 Test loss=0.343072
+
+[0/12] Train loss=0.3705406188964844
+[5/12] Train loss=0.44899556040763855
+[10/12] Train loss=0.32437244057655334
+Test set avg_accuracy=88.90% avg_sensitivity=66.29%, avg_specificity=95.82% avg_auc=0.9223
+Fold[7] Epoch: 13 [13/300 (4%)] Train loss=0.419811 Test loss=0.365770
+
+[0/12] Train loss=0.4129577577114105
+[5/12] Train loss=0.36349591612815857
+[10/12] Train loss=0.3304055631160736
+Test set avg_accuracy=89.31% avg_sensitivity=74.12%, avg_specificity=93.95% avg_auc=0.9353
+Fold[7] Epoch: 14 [14/300 (5%)] Train loss=0.383820 Test loss=0.313005
+
+[0/12] Train loss=0.3369337022304535
+[5/12] Train loss=0.3451167047023773
+[10/12] Train loss=0.30631667375564575
+Test set avg_accuracy=88.98% avg_sensitivity=73.30%, avg_specificity=93.77% avg_auc=0.9175
+Fold[7] Epoch: 15 [15/300 (5%)] Train loss=0.366571 Test loss=0.407955
+
+[0/12] Train loss=0.31289198994636536
+[5/12] Train loss=0.30161362886428833
+[10/12] Train loss=0.27385714650154114
+Test set avg_accuracy=89.04% avg_sensitivity=73.44%, avg_specificity=93.81% avg_auc=0.9283
+Fold[7] Epoch: 16 [16/300 (5%)] Train loss=0.319546 Test loss=0.359320
+
+[0/12] Train loss=0.28806406259536743
+[5/12] Train loss=0.29405665397644043
+[10/12] Train loss=0.24630767107009888
+Test set avg_accuracy=88.53% avg_sensitivity=73.39%, avg_specificity=93.16% avg_auc=0.9211
+Fold[7] Epoch: 17 [17/300 (6%)] Train loss=0.289222 Test loss=0.363503
+
+[0/12] Train loss=0.279390811920166
+[5/12] Train loss=0.23833350837230682
+[10/12] Train loss=0.21230223774909973
+Test set avg_accuracy=88.01% avg_sensitivity=81.13%, avg_specificity=90.12% avg_auc=0.9313
+Fold[7] Epoch: 18 [18/300 (6%)] Train loss=0.247982 Test loss=0.470394
+
+[0/12] Train loss=0.25249168276786804
+[5/12] Train loss=0.2702390253543854
+[10/12] Train loss=0.22571484744548798
+Test set avg_accuracy=85.84% avg_sensitivity=85.25%, avg_specificity=86.02% avg_auc=0.9302
+Fold[7] Epoch: 19 [19/300 (6%)] Train loss=0.229624 Test loss=0.516765
+
+[0/12] Train loss=0.24024565517902374
+[5/12] Train loss=0.25775089859962463
+[10/12] Train loss=0.2012273520231247
+Test set avg_accuracy=86.49% avg_sensitivity=86.47%, avg_specificity=86.49% avg_auc=0.9331
+Fold[7] Epoch: 20 [20/300 (7%)] Train loss=0.218541 Test loss=0.491235
+
+[0/12] Train loss=0.26759687066078186
+[5/12] Train loss=0.17708463966846466
+[10/12] Train loss=0.1694018691778183
+Test set avg_accuracy=86.94% avg_sensitivity=84.84%, avg_specificity=87.58% avg_auc=0.9292
+Fold[7] Epoch: 21 [21/300 (7%)] Train loss=0.214237 Test loss=0.504113
+
+[0/12] Train loss=0.19523729383945465
+[5/12] Train loss=0.2142363041639328
+[10/12] Train loss=0.1960543841123581
+Test set avg_accuracy=89.40% avg_sensitivity=71.99%, avg_specificity=94.73% avg_auc=0.9249
+Fold[7] Epoch: 22 [22/300 (7%)] Train loss=0.192437 Test loss=0.404262
+
+[0/12] Train loss=0.18654856085777283
+[5/12] Train loss=0.1647748351097107
+[10/12] Train loss=0.12665390968322754
+Test set avg_accuracy=89.33% avg_sensitivity=71.40%, avg_specificity=94.81% avg_auc=0.9211
+Fold[7] Epoch: 23 [23/300 (8%)] Train loss=0.158282 Test loss=0.469704
+
+[0/12] Train loss=0.14926181733608246
+[5/12] Train loss=0.11835609376430511
+[10/12] Train loss=0.10829207301139832
+Test set avg_accuracy=88.26% avg_sensitivity=78.55%, avg_specificity=91.22% avg_auc=0.9262
+Fold[7] Epoch: 24 [24/300 (8%)] Train loss=0.127632 Test loss=0.450731
+
+[0/12] Train loss=0.11636851727962494
+[5/12] Train loss=0.1146971732378006
+[10/12] Train loss=0.07602571696043015
+Test set avg_accuracy=88.50% avg_sensitivity=80.23%, avg_specificity=91.03% avg_auc=0.9325
+Fold[7] Epoch: 25 [25/300 (8%)] Train loss=0.098078 Test loss=0.474444
+
+[0/12] Train loss=0.09044890105724335
+[5/12] Train loss=0.07742472738027573
+[10/12] Train loss=0.06525573134422302
+Test set avg_accuracy=89.71% avg_sensitivity=74.98%, avg_specificity=94.21% avg_auc=0.9313
+Fold[7] Epoch: 26 [26/300 (9%)] Train loss=0.076292 Test loss=0.465819
+
+Early Stopping!!! Best loss=0.27656689286231995
+Fold[7] Best Result: acc=89.29517753047165 sen=81.58371040723982, spe=91.65397923875432, auc=0.938219668383723!
+[0/12] Train loss=1.4214277267456055
+[5/12] Train loss=1.6660032272338867
+[10/12] Train loss=0.8985066413879395
+Test set avg_accuracy=80.82% avg_sensitivity=36.53%, avg_specificity=94.66% avg_auc=0.8463
+Best model saved!!!!
+Fold[8] Epoch: 1 [1/300 (0%)] Train loss=2.030467 Test loss=0.440596
+
+[0/12] Train loss=0.8898345232009888
+[5/12] Train loss=0.9989333152770996
+[10/12] Train loss=0.7534078359603882
+Test set avg_accuracy=83.17% avg_sensitivity=67.91%, avg_specificity=87.95% avg_auc=0.8840
+Best model saved!!!!
+Fold[8] Epoch: 2 [2/300 (1%)] Train loss=0.899106 Test loss=0.361576
+
+[0/12] Train loss=0.7374776601791382
+[5/12] Train loss=0.7828445434570312
+[10/12] Train loss=0.6517279744148254
+Test set avg_accuracy=84.30% avg_sensitivity=64.38%, avg_specificity=90.53% avg_auc=0.8958
+Best model saved!!!!
+Fold[8] Epoch: 3 [3/300 (1%)] Train loss=0.761779 Test loss=0.355370
+
+[0/12] Train loss=0.6737334132194519
+[5/12] Train loss=0.7281404137611389
+[10/12] Train loss=0.6291753053665161
+Test set avg_accuracy=84.80% avg_sensitivity=75.77%, avg_specificity=87.63% avg_auc=0.9084
+Best model saved!!!!
+Fold[8] Epoch: 4 [4/300 (1%)] Train loss=0.720200 Test loss=0.343738
+
+[0/12] Train loss=0.6085647940635681
+[5/12] Train loss=0.6660845875740051
+[10/12] Train loss=0.5842180252075195
+Test set avg_accuracy=85.44% avg_sensitivity=76.88%, avg_specificity=88.11% avg_auc=0.9141
+Best model saved!!!!
+Fold[8] Epoch: 5 [5/300 (2%)] Train loss=0.661525 Test loss=0.332069
+
+[0/12] Train loss=0.5969147086143494
+[5/12] Train loss=0.5810268521308899
+[10/12] Train loss=0.4997185468673706
+Test set avg_accuracy=86.59% avg_sensitivity=77.08%, avg_specificity=89.56% avg_auc=0.9246
+Best model saved!!!!
+Fold[8] Epoch: 6 [6/300 (2%)] Train loss=0.587733 Test loss=0.305210
+
+[0/12] Train loss=0.5459352135658264
+[5/12] Train loss=0.5513266324996948
+[10/12] Train loss=0.44897425174713135
+Test set avg_accuracy=86.17% avg_sensitivity=70.66%, avg_specificity=91.02% avg_auc=0.9192
+Fold[8] Epoch: 7 [7/300 (2%)] Train loss=0.536875 Test loss=0.316080
+
+[0/12] Train loss=0.5442836284637451
+[5/12] Train loss=0.5316510796546936
+[10/12] Train loss=0.45828428864479065
+Test set avg_accuracy=86.99% avg_sensitivity=69.06%, avg_specificity=92.59% avg_auc=0.9227
+Fold[8] Epoch: 8 [8/300 (3%)] Train loss=0.522258 Test loss=0.299347
+
+[0/12] Train loss=0.49585139751434326
+[5/12] Train loss=0.5039610266685486
+[10/12] Train loss=0.383823424577713
+Test set avg_accuracy=86.18% avg_sensitivity=66.84%, avg_specificity=92.23% avg_auc=0.9199
+Fold[8] Epoch: 9 [9/300 (3%)] Train loss=0.486578 Test loss=0.331666
+
+[0/12] Train loss=0.500899612903595
+[5/12] Train loss=0.5200787782669067
+[10/12] Train loss=0.41239142417907715
+Test set avg_accuracy=86.68% avg_sensitivity=62.31%, avg_specificity=94.30% avg_auc=0.9194
+Fold[8] Epoch: 10 [10/300 (3%)] Train loss=0.514661 Test loss=0.317741
+
+[0/12] Train loss=0.5320618152618408
+[5/12] Train loss=0.4425228238105774
+[10/12] Train loss=0.3732459247112274
+Test set avg_accuracy=85.76% avg_sensitivity=59.17%, avg_specificity=94.07% avg_auc=0.8981
+Fold[8] Epoch: 11 [11/300 (4%)] Train loss=0.471250 Test loss=0.354924
+
+[0/12] Train loss=0.4409906566143036
+[5/12] Train loss=0.41475680470466614
+[10/12] Train loss=0.4164358973503113
+Test set avg_accuracy=86.03% avg_sensitivity=68.53%, avg_specificity=91.51% avg_auc=0.9127
+Fold[8] Epoch: 12 [12/300 (4%)] Train loss=0.461235 Test loss=0.336715
+
+[0/12] Train loss=0.43339261412620544
+[5/12] Train loss=0.40632084012031555
+[10/12] Train loss=0.4349852204322815
+Test set avg_accuracy=86.21% avg_sensitivity=81.42%, avg_specificity=87.70% avg_auc=0.9259
+Best model saved!!!!
+Fold[8] Epoch: 13 [13/300 (4%)] Train loss=0.444784 Test loss=0.406000
+
+[0/12] Train loss=0.4563849866390228
+[5/12] Train loss=0.4639078676700592
+[10/12] Train loss=0.3826795220375061
+Test set avg_accuracy=83.78% avg_sensitivity=87.45%, avg_specificity=82.63% avg_auc=0.9258
+Fold[8] Epoch: 14 [14/300 (5%)] Train loss=0.424314 Test loss=0.439064
+
+[0/12] Train loss=0.4484073519706726
+[5/12] Train loss=0.37876975536346436
+[10/12] Train loss=0.27505266666412354
+Test set avg_accuracy=86.22% avg_sensitivity=81.13%, avg_specificity=87.81% avg_auc=0.9243
+Fold[8] Epoch: 15 [15/300 (5%)] Train loss=0.378233 Test loss=0.373320
+
+[0/12] Train loss=0.33052000403404236
+[5/12] Train loss=0.2975768446922302
+[10/12] Train loss=0.21955542266368866
+Test set avg_accuracy=85.68% avg_sensitivity=80.84%, avg_specificity=87.19% avg_auc=0.9249
+Fold[8] Epoch: 16 [16/300 (5%)] Train loss=0.288868 Test loss=0.395015
+
+[0/12] Train loss=0.2839568257331848
+[5/12] Train loss=0.22717566788196564
+[10/12] Train loss=0.2166173756122589
+Test set avg_accuracy=87.13% avg_sensitivity=75.14%, avg_specificity=90.87% avg_auc=0.9266
+Fold[8] Epoch: 17 [17/300 (6%)] Train loss=0.241065 Test loss=0.375386
+
+[0/12] Train loss=0.2292482554912567
+[5/12] Train loss=0.2525719404220581
+[10/12] Train loss=0.15594160556793213
+Test set avg_accuracy=86.53% avg_sensitivity=68.77%, avg_specificity=92.08% avg_auc=0.9213
+Fold[8] Epoch: 18 [18/300 (6%)] Train loss=0.204924 Test loss=0.418805
+
+[0/12] Train loss=0.223867729306221
+[5/12] Train loss=0.20527461171150208
+[10/12] Train loss=0.15140362083911896
+Test set avg_accuracy=86.34% avg_sensitivity=73.02%, avg_specificity=90.51% avg_auc=0.9234
+Fold[8] Epoch: 19 [19/300 (6%)] Train loss=0.211153 Test loss=0.448159
+
+[0/12] Train loss=0.2044677585363388
+[5/12] Train loss=0.20981064438819885
+[10/12] Train loss=0.18919076025485992
+Test set avg_accuracy=86.28% avg_sensitivity=74.81%, avg_specificity=89.86% avg_auc=0.9186
+Fold[8] Epoch: 20 [20/300 (7%)] Train loss=0.211308 Test loss=0.427195
+
+[0/12] Train loss=0.2568087875843048
+[5/12] Train loss=0.22396062314510345
+[10/12] Train loss=0.17845281958580017
+Test set avg_accuracy=84.87% avg_sensitivity=82.34%, avg_specificity=85.67% avg_auc=0.9162
+Fold[8] Epoch: 21 [21/300 (7%)] Train loss=0.197169 Test loss=0.502093
+
+[0/12] Train loss=0.20615477859973907
+[5/12] Train loss=0.15898069739341736
+[10/12] Train loss=0.12414802610874176
+Test set avg_accuracy=85.09% avg_sensitivity=82.29%, avg_specificity=85.97% avg_auc=0.9190
+Fold[8] Epoch: 22 [22/300 (7%)] Train loss=0.176007 Test loss=0.532945
+
+[0/12] Train loss=0.18419277667999268
+[5/12] Train loss=0.1363062709569931
+[10/12] Train loss=0.14309203624725342
+Test set avg_accuracy=87.18% avg_sensitivity=73.65%, avg_specificity=91.42% avg_auc=0.9229
+Fold[8] Epoch: 23 [23/300 (8%)] Train loss=0.153500 Test loss=0.439758
+
+[0/12] Train loss=0.1315518021583557
+[5/12] Train loss=0.1406085342168808
+[10/12] Train loss=0.08662088960409164
+Test set avg_accuracy=87.00% avg_sensitivity=69.45%, avg_specificity=92.49% avg_auc=0.9172
+Fold[8] Epoch: 24 [24/300 (8%)] Train loss=0.114282 Test loss=0.471223
+
+[0/12] Train loss=0.12286211550235748
+[5/12] Train loss=0.10114208608865738
+[10/12] Train loss=0.08154525607824326
+Test set avg_accuracy=86.90% avg_sensitivity=76.25%, avg_specificity=90.22% avg_auc=0.9249
+Fold[8] Epoch: 25 [25/300 (8%)] Train loss=0.107232 Test loss=0.500154
+
+[0/12] Train loss=0.08624621480703354
+[5/12] Train loss=0.09863729029893875
+[10/12] Train loss=0.0637875646352768
+Test set avg_accuracy=86.43% avg_sensitivity=77.56%, avg_specificity=89.20% avg_auc=0.9236
+Fold[8] Epoch: 26 [26/300 (9%)] Train loss=0.083938 Test loss=0.540720
+
+[0/12] Train loss=0.08836447447538376
+[5/12] Train loss=0.07013828307390213
+[10/12] Train loss=0.060545507818460464
+Test set avg_accuracy=87.54% avg_sensitivity=73.89%, avg_specificity=91.81% avg_auc=0.9260
+Fold[8] Epoch: 27 [27/300 (9%)] Train loss=0.069059 Test loss=0.500538
+
+[0/12] Train loss=0.056739337742328644
+[5/12] Train loss=0.05782827362418175
+[10/12] Train loss=0.04176667705178261
+Test set avg_accuracy=87.39% avg_sensitivity=73.31%, avg_specificity=91.79% avg_auc=0.9243
+Fold[8] Epoch: 28 [28/300 (9%)] Train loss=0.052837 Test loss=0.544366
+
+Early Stopping!!! Best loss=0.2993468642234802
+Fold[8] Best Result: acc=86.20689655172413 sen=81.41891891891892, spe=87.70368135184069, auc=0.9259288574504326!
+[0/12] Train loss=1.4175055027008057
+[5/12] Train loss=1.1607930660247803
+[10/12] Train loss=0.9304417967796326
+Test set avg_accuracy=79.75% avg_sensitivity=47.48%, avg_specificity=90.55% avg_auc=0.8367
+Best model saved!!!!
+Fold[9] Epoch: 1 [1/300 (0%)] Train loss=1.455658 Test loss=0.417602
+
+[0/12] Train loss=0.8143357038497925
+[5/12] Train loss=0.9360831379890442
+[10/12] Train loss=0.7608738541603088
+Test set avg_accuracy=81.97% avg_sensitivity=48.51%, avg_specificity=93.17% avg_auc=0.8766
+Best model saved!!!!
+Fold[9] Epoch: 2 [2/300 (1%)] Train loss=0.866233 Test loss=0.379317
+
+[0/12] Train loss=0.7191780805587769
+[5/12] Train loss=0.7726539969444275
+[10/12] Train loss=0.6399518251419067
+Test set avg_accuracy=83.19% avg_sensitivity=56.86%, avg_specificity=92.00% avg_auc=0.8884
+Best model saved!!!!
+Fold[9] Epoch: 3 [3/300 (1%)] Train loss=0.752950 Test loss=0.389859
+
+[0/12] Train loss=0.6376623511314392
+[5/12] Train loss=0.7043234705924988
+[10/12] Train loss=0.6046669483184814
+Test set avg_accuracy=84.08% avg_sensitivity=63.65%, avg_specificity=90.91% avg_auc=0.8980
+Best model saved!!!!
+Fold[9] Epoch: 4 [4/300 (1%)] Train loss=0.698998 Test loss=0.356240
+
+[0/12] Train loss=0.605527400970459
+[5/12] Train loss=0.632074236869812
+[10/12] Train loss=0.5236645936965942
+Test set avg_accuracy=84.98% avg_sensitivity=67.04%, avg_specificity=90.98% avg_auc=0.9030
+Best model saved!!!!
+Fold[9] Epoch: 5 [5/300 (2%)] Train loss=0.624495 Test loss=0.367432
+
+[0/12] Train loss=0.5445839166641235
+[5/12] Train loss=0.5785370469093323
+[10/12] Train loss=0.49332594871520996
+Test set avg_accuracy=84.83% avg_sensitivity=69.78%, avg_specificity=89.87% avg_auc=0.9057
+Best model saved!!!!
+Fold[9] Epoch: 6 [6/300 (2%)] Train loss=0.575187 Test loss=0.360292
+
+[0/12] Train loss=0.5359174609184265
+[5/12] Train loss=0.5624415278434753
+[10/12] Train loss=0.45489194989204407
+Test set avg_accuracy=85.11% avg_sensitivity=74.82%, avg_specificity=88.55% avg_auc=0.9141
+Best model saved!!!!
+Fold[9] Epoch: 7 [7/300 (2%)] Train loss=0.527982 Test loss=0.357345
+
+[0/12] Train loss=0.47680607438087463
+[5/12] Train loss=0.4839310348033905
+[10/12] Train loss=0.4184003472328186
+Test set avg_accuracy=85.97% avg_sensitivity=72.80%, avg_specificity=90.38% avg_auc=0.9203
+Best model saved!!!!
+Fold[9] Epoch: 8 [8/300 (3%)] Train loss=0.470655 Test loss=0.345283
+
+[0/12] Train loss=0.44095879793167114
+[5/12] Train loss=0.4488336741924286
+[10/12] Train loss=0.3691836893558502
+Test set avg_accuracy=85.66% avg_sensitivity=64.88%, avg_specificity=92.62% avg_auc=0.9131
+Fold[9] Epoch: 9 [9/300 (3%)] Train loss=0.448854 Test loss=0.382063
+
+[0/12] Train loss=0.45765137672424316
+[5/12] Train loss=0.5044842958450317
+[10/12] Train loss=0.3564454913139343
+Test set avg_accuracy=85.34% avg_sensitivity=64.92%, avg_specificity=92.18% avg_auc=0.9146
+Fold[9] Epoch: 10 [10/300 (3%)] Train loss=0.437799 Test loss=0.375594
+
+[0/12] Train loss=0.4153909683227539
+[5/12] Train loss=0.42993712425231934
+[10/12] Train loss=0.3187127709388733
+Test set avg_accuracy=85.11% avg_sensitivity=59.41%, avg_specificity=93.71% avg_auc=0.9067
+Fold[9] Epoch: 11 [11/300 (4%)] Train loss=0.402860 Test loss=0.412033
+
+[0/12] Train loss=0.41720762848854065
+[5/12] Train loss=0.4430549144744873
+[10/12] Train loss=0.301211416721344
+Test set avg_accuracy=85.13% avg_sensitivity=58.09%, avg_specificity=94.18% avg_auc=0.9073
+Fold[9] Epoch: 12 [12/300 (4%)] Train loss=0.369257 Test loss=0.414705
+
+[0/12] Train loss=0.3458382487297058
+[5/12] Train loss=0.36780843138694763
+[10/12] Train loss=0.3343049883842468
+Test set avg_accuracy=84.28% avg_sensitivity=63.13%, avg_specificity=91.36% avg_auc=0.9041
+Fold[9] Epoch: 13 [13/300 (4%)] Train loss=0.353947 Test loss=0.390379
+
+[0/12] Train loss=0.42571499943733215
+[5/12] Train loss=0.3641241192817688
+[10/12] Train loss=0.28886765241622925
+Test set avg_accuracy=85.26% avg_sensitivity=67.04%, avg_specificity=91.36% avg_auc=0.9098
+Fold[9] Epoch: 14 [14/300 (5%)] Train loss=0.334271 Test loss=0.384780
+
+[0/12] Train loss=0.31047388911247253
+[5/12] Train loss=0.31074944138526917
+[10/12] Train loss=0.3474598824977875
+Test set avg_accuracy=83.32% avg_sensitivity=50.83%, avg_specificity=94.19% avg_auc=0.8871
+Fold[9] Epoch: 15 [15/300 (5%)] Train loss=0.331878 Test loss=0.528220
+
+[0/12] Train loss=0.3212028741836548
+[5/12] Train loss=0.2863534390926361
+[10/12] Train loss=0.27344051003456116
+Test set avg_accuracy=84.63% avg_sensitivity=70.39%, avg_specificity=89.40% avg_auc=0.8992
+Fold[9] Epoch: 16 [16/300 (5%)] Train loss=0.328575 Test loss=0.451737
+
+[0/12] Train loss=0.34192606806755066
+[5/12] Train loss=0.49046429991722107
+[10/12] Train loss=0.44442328810691833
+Test set avg_accuracy=83.63% avg_sensitivity=85.38%, avg_specificity=83.04% avg_auc=0.9138
+Best model saved!!!!
+Fold[9] Epoch: 17 [17/300 (6%)] Train loss=0.352955 Test loss=0.520661
+
+[0/12] Train loss=0.3934682309627533
+[5/12] Train loss=0.3270445466041565
+[10/12] Train loss=0.3180256485939026
+Test set avg_accuracy=83.56% avg_sensitivity=84.39%, avg_specificity=83.28% avg_auc=0.9144
+Fold[9] Epoch: 18 [18/300 (6%)] Train loss=0.321054 Test loss=0.564885
+
+[0/12] Train loss=0.339687705039978
+[5/12] Train loss=0.24465952813625336
+[10/12] Train loss=0.21531644463539124
+Test set avg_accuracy=84.47% avg_sensitivity=83.59%, avg_specificity=84.76% avg_auc=0.9194
+Best model saved!!!!
+Fold[9] Epoch: 19 [19/300 (6%)] Train loss=0.276742 Test loss=0.501237
+
+[0/12] Train loss=0.25755739212036133
+[5/12] Train loss=0.2297096997499466
+[10/12] Train loss=0.17568165063858032
+Test set avg_accuracy=86.08% avg_sensitivity=74.02%, avg_specificity=90.11% avg_auc=0.9208
+Fold[9] Epoch: 20 [20/300 (7%)] Train loss=0.224827 Test loss=0.450949
+
+[0/12] Train loss=0.19745837152004242
+[5/12] Train loss=0.20292352139949799
+[10/12] Train loss=0.12143822759389877
+Test set avg_accuracy=86.18% avg_sensitivity=71.43%, avg_specificity=91.12% avg_auc=0.9145
+Fold[9] Epoch: 21 [21/300 (7%)] Train loss=0.173238 Test loss=0.440950
+
+[0/12] Train loss=0.16550156474113464
+[5/12] Train loss=0.1375793218612671
+[10/12] Train loss=0.10107053071260452
+Test set avg_accuracy=85.69% avg_sensitivity=79.30%, avg_specificity=87.82% avg_auc=0.9193
+Fold[9] Epoch: 22 [22/300 (7%)] Train loss=0.130996 Test loss=0.547315
+
+[0/12] Train loss=0.1441296637058258
+[5/12] Train loss=0.10052710026502609
+[10/12] Train loss=0.06987415999174118
+Test set avg_accuracy=86.35% avg_sensitivity=74.59%, avg_specificity=90.28% avg_auc=0.9208
+Fold[9] Epoch: 23 [23/300 (8%)] Train loss=0.104325 Test loss=0.502014
+
+[0/12] Train loss=0.09515327960252762
+[5/12] Train loss=0.08931513130664825
+[10/12] Train loss=0.05543681979179382
+Test set avg_accuracy=86.23% avg_sensitivity=72.51%, avg_specificity=90.82% avg_auc=0.9202
+Fold[9] Epoch: 24 [24/300 (8%)] Train loss=0.081333 Test loss=0.515117
+
+[0/12] Train loss=0.08136481046676636
+[5/12] Train loss=0.06645593047142029
+[10/12] Train loss=0.04838977009057999
+Test set avg_accuracy=85.83% avg_sensitivity=76.66%, avg_specificity=88.89% avg_auc=0.9221
+Fold[9] Epoch: 25 [25/300 (8%)] Train loss=0.065582 Test loss=0.547447
+
+[0/12] Train loss=0.05180935561656952
+[5/12] Train loss=0.052655018866062164
+[10/12] Train loss=0.04123679921030998
+Test set avg_accuracy=86.71% avg_sensitivity=73.93%, avg_specificity=90.99% avg_auc=0.9230
+Fold[9] Epoch: 26 [26/300 (9%)] Train loss=0.051414 Test loss=0.545155
+
+[0/12] Train loss=0.04630683362483978
+[5/12] Train loss=0.045549407601356506
+[10/12] Train loss=0.039925139397382736
+Test set avg_accuracy=86.49% avg_sensitivity=73.17%, avg_specificity=90.94% avg_auc=0.9225
+Fold[9] Epoch: 27 [27/300 (9%)] Train loss=0.046476 Test loss=0.559920
+
+[0/12] Train loss=0.04131896421313286
+[5/12] Train loss=0.03983369097113609
+[10/12] Train loss=0.03345828130841255
+Test set avg_accuracy=86.49% avg_sensitivity=74.78%, avg_specificity=90.41% avg_auc=0.9225
+Fold[9] Epoch: 28 [28/300 (9%)] Train loss=0.039497 Test loss=0.580387
+
+Early Stopping!!! Best loss=0.34528347849845886
+Fold[9] Best Result: acc=84.46808510638299 sen=83.5926449787836, spe=84.76100331282537, auc=0.9193667186338673!
+[0/12] Train loss=1.422189474105835
+[5/12] Train loss=1.0805720090866089
+[10/12] Train loss=1.1127521991729736
+Test set avg_accuracy=80.53% avg_sensitivity=19.07%, avg_specificity=98.67% avg_auc=0.8252
+Best model saved!!!!
+Fold[10] Epoch: 1 [1/300 (0%)] Train loss=1.538143 Test loss=0.466246
+
+[0/12] Train loss=0.8241769671440125
+[5/12] Train loss=0.8888632655143738
+[10/12] Train loss=0.9631364345550537
+Test set avg_accuracy=84.55% avg_sensitivity=47.75%, avg_specificity=95.41% avg_auc=0.8801
+Best model saved!!!!
+Fold[10] Epoch: 2 [2/300 (1%)] Train loss=0.855686 Test loss=0.353288
+
+[0/12] Train loss=0.7338985800743103
+[5/12] Train loss=0.7584070563316345
+[10/12] Train loss=0.8369079828262329
+Test set avg_accuracy=85.51% avg_sensitivity=49.04%, avg_specificity=96.28% avg_auc=0.9050
+Best model saved!!!!
+Fold[10] Epoch: 3 [3/300 (1%)] Train loss=0.746403 Test loss=0.333938
+
+[0/12] Train loss=0.6298968195915222
+[5/12] Train loss=0.6759625673294067
+[10/12] Train loss=0.7497329711914062
+Test set avg_accuracy=87.51% avg_sensitivity=64.91%, avg_specificity=94.19% avg_auc=0.9169
+Best model saved!!!!
+Fold[10] Epoch: 4 [4/300 (1%)] Train loss=0.683555 Test loss=0.296856
+
+[0/12] Train loss=0.5894069075584412
+[5/12] Train loss=0.5940374135971069
+[10/12] Train loss=0.6908484101295471
+Test set avg_accuracy=88.80% avg_sensitivity=70.03%, avg_specificity=94.34% avg_auc=0.9334
+Best model saved!!!!
+Fold[10] Epoch: 5 [5/300 (2%)] Train loss=0.619103 Test loss=0.270381
+
+[0/12] Train loss=0.547739565372467
+[5/12] Train loss=0.5468952655792236
+[10/12] Train loss=0.6346506476402283
+Test set avg_accuracy=87.68% avg_sensitivity=76.23%, avg_specificity=91.06% avg_auc=0.9327
+Best model saved!!!!
+Fold[10] Epoch: 6 [6/300 (2%)] Train loss=0.560112 Test loss=0.288009
+
+[0/12] Train loss=0.48945605754852295
+[5/12] Train loss=0.4963698983192444
+[10/12] Train loss=0.5669770836830139
+Test set avg_accuracy=88.23% avg_sensitivity=74.11%, avg_specificity=92.40% avg_auc=0.9297
+Fold[10] Epoch: 7 [7/300 (2%)] Train loss=0.511632 Test loss=0.295123
+
+[0/12] Train loss=0.44921553134918213
+[5/12] Train loss=0.4973238706588745
+[10/12] Train loss=0.5232055187225342
+Test set avg_accuracy=88.13% avg_sensitivity=69.61%, avg_specificity=93.59% avg_auc=0.9259
+Fold[10] Epoch: 8 [8/300 (3%)] Train loss=0.473925 Test loss=0.302673
+
+[0/12] Train loss=0.4399997889995575
+[5/12] Train loss=0.44934284687042236
+[10/12] Train loss=0.5607659220695496
+Test set avg_accuracy=89.20% avg_sensitivity=72.97%, avg_specificity=93.99% avg_auc=0.9376
+Best model saved!!!!
+Fold[10] Epoch: 9 [9/300 (3%)] Train loss=0.467065 Test loss=0.274634
+
+[0/12] Train loss=0.41986536979675293
+[5/12] Train loss=0.3953118324279785
+[10/12] Train loss=0.4829302132129669
+Test set avg_accuracy=88.40% avg_sensitivity=63.05%, avg_specificity=95.88% avg_auc=0.9285
+Fold[10] Epoch: 10 [10/300 (3%)] Train loss=0.431879 Test loss=0.297045
+
+[0/12] Train loss=0.363266259431839
+[5/12] Train loss=0.4116803705692291
+[10/12] Train loss=0.45417314767837524
+Test set avg_accuracy=86.56% avg_sensitivity=56.69%, avg_specificity=95.38% avg_auc=0.9109
+Fold[10] Epoch: 11 [11/300 (4%)] Train loss=0.400338 Test loss=0.337972
+
+[0/12] Train loss=0.468011736869812
+[5/12] Train loss=0.37150269746780396
+[10/12] Train loss=0.4216965138912201
+Test set avg_accuracy=88.48% avg_sensitivity=72.76%, avg_specificity=93.12% avg_auc=0.9248
+Fold[10] Epoch: 12 [12/300 (4%)] Train loss=0.406384 Test loss=0.294229
+
+[0/12] Train loss=0.4002777934074402
+[5/12] Train loss=0.37189820408821106
+[10/12] Train loss=0.4733768701553345
+Test set avg_accuracy=87.21% avg_sensitivity=80.52%, avg_specificity=89.18% avg_auc=0.9352
+Best model saved!!!!
+Fold[10] Epoch: 13 [13/300 (4%)] Train loss=0.377043 Test loss=0.330423
+
+[0/12] Train loss=0.32869574427604675
+[5/12] Train loss=0.35037341713905334
+[10/12] Train loss=0.42787936329841614
+Test set avg_accuracy=88.04% avg_sensitivity=81.45%, avg_specificity=89.99% avg_auc=0.9346
+Best model saved!!!!
+Fold[10] Epoch: 14 [14/300 (5%)] Train loss=0.360245 Test loss=0.355119
+
+[0/12] Train loss=0.3246234953403473
+[5/12] Train loss=0.3139413297176361
+[10/12] Train loss=0.36437150835990906
+Test set avg_accuracy=89.34% avg_sensitivity=68.94%, avg_specificity=95.36% avg_auc=0.9413
+Fold[10] Epoch: 15 [15/300 (5%)] Train loss=0.343182 Test loss=0.294988
+
+[0/12] Train loss=0.3249666690826416
+[5/12] Train loss=0.3805141746997833
+[10/12] Train loss=0.31818509101867676
+Test set avg_accuracy=88.72% avg_sensitivity=69.77%, avg_specificity=94.31% avg_auc=0.9338
+Fold[10] Epoch: 16 [16/300 (5%)] Train loss=0.332078 Test loss=0.307950
+
+[0/12] Train loss=0.2947115898132324
+[5/12] Train loss=0.25377970933914185
+[10/12] Train loss=0.29009678959846497
+Test set avg_accuracy=89.05% avg_sensitivity=75.25%, avg_specificity=93.12% avg_auc=0.9368
+Fold[10] Epoch: 17 [17/300 (6%)] Train loss=0.274970 Test loss=0.310226
+
+[0/12] Train loss=0.24271923303604126
+[5/12] Train loss=0.20273400843143463
+[10/12] Train loss=0.3040006458759308
+Test set avg_accuracy=88.95% avg_sensitivity=80.62%, avg_specificity=91.41% avg_auc=0.9424
+Best model saved!!!!
+Fold[10] Epoch: 18 [18/300 (6%)] Train loss=0.244516 Test loss=0.337742
+
+[0/12] Train loss=0.22273196280002594
+[5/12] Train loss=0.32426923513412476
+[10/12] Train loss=0.31439733505249023
+Test set avg_accuracy=86.01% avg_sensitivity=85.58%, avg_specificity=86.13% avg_auc=0.9357
+Fold[10] Epoch: 19 [19/300 (6%)] Train loss=0.243245 Test loss=0.496088
+
+[0/12] Train loss=0.3003856837749481
+[5/12] Train loss=0.35368838906288147
+[10/12] Train loss=0.24979573488235474
+Test set avg_accuracy=86.71% avg_sensitivity=83.72%, avg_specificity=87.60% avg_auc=0.9364
+Fold[10] Epoch: 20 [20/300 (7%)] Train loss=0.253962 Test loss=0.379128
+
+[0/12] Train loss=0.23818954825401306
+[5/12] Train loss=0.16061408817768097
+[10/12] Train loss=0.1929679960012436
+Test set avg_accuracy=86.43% avg_sensitivity=87.24%, avg_specificity=86.19% avg_auc=0.9370
+Fold[10] Epoch: 21 [21/300 (7%)] Train loss=0.196113 Test loss=0.458746
+
+[0/12] Train loss=0.19523900747299194
+[5/12] Train loss=0.1467532068490982
+[10/12] Train loss=0.18690304458141327
+Test set avg_accuracy=88.94% avg_sensitivity=80.62%, avg_specificity=91.40% avg_auc=0.9405
+Fold[10] Epoch: 22 [22/300 (7%)] Train loss=0.173229 Test loss=0.358110
+
+[0/12] Train loss=0.15247507393360138
+[5/12] Train loss=0.14303947985172272
+[10/12] Train loss=0.15947990119457245
+Test set avg_accuracy=89.53% avg_sensitivity=75.09%, avg_specificity=93.79% avg_auc=0.9403
+Fold[10] Epoch: 23 [23/300 (8%)] Train loss=0.140881 Test loss=0.351383
+
+[0/12] Train loss=0.15436723828315735
+[5/12] Train loss=0.12809555232524872
+[10/12] Train loss=0.14862827956676483
+Test set avg_accuracy=88.43% avg_sensitivity=80.67%, avg_specificity=90.72% avg_auc=0.9376
+Fold[10] Epoch: 24 [24/300 (8%)] Train loss=0.127531 Test loss=0.415869
+
+[0/12] Train loss=0.13422438502311707
+[5/12] Train loss=0.09498709440231323
+[10/12] Train loss=0.09376128762960434
+Test set avg_accuracy=88.42% avg_sensitivity=82.58%, avg_specificity=90.14% avg_auc=0.9424
+Best model saved!!!!
+Fold[10] Epoch: 25 [25/300 (8%)] Train loss=0.103590 Test loss=0.422110
+
+Early Stopping!!! Best loss=0.2703806459903717
+Fold[10] Best Result: acc=88.42167255594818 sen=82.58397932816538, spe=90.14492753623189, auc=0.9424348535646497!
+Final Avg Result: avg_acc=86.508087% avg_sen=79.989590% avg_spe=88.665952% avg_auc=0.924119
