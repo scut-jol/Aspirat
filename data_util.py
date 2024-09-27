@@ -18,10 +18,9 @@ import torch.nn.init as init
 
 
 def get_weight(label):
-    # num_ones = torch.sum(label == 1).item()
-    # num_zeros = torch.sum(label == 0).item()
-    # alpha = num_ones / (num_ones + num_zeros)
-    alpha = 1 / 2.5
+    num_ones = torch.sum(label == 1).item()
+    num_zeros = torch.sum(label == 0).item()
+    alpha = num_ones / (num_ones + num_zeros)
     weight = label / alpha + (1 - label) / (1 - alpha)
     return weight
 
@@ -189,23 +188,6 @@ def process_folder(root_folder):
         csv_writer = csv.writer(csv_file)
         for row in files_list:
             csv_writer.writerow(row)
-
-
-def compare_files(file1_path, file2_path, output_path):
-    # 读取文件1的内容
-    with open(file1_path, 'r') as file1:
-        lines_file1 = set(file1.readlines())
-
-    # 读取文件2的内容
-    with open(file2_path, 'r') as file2:
-        lines_file2 = set(file2.readlines())
-
-    # 找到两个文件中不同的行
-    different_lines = lines_file1.symmetric_difference(lines_file2)
-
-    # 将不同的行写入输出文件
-    with open(output_path, 'w') as output_file:
-        output_file.writelines(sorted(different_lines))
 
 
 def count_patient(root_folder):
@@ -398,27 +380,27 @@ def mask_normal(label, weight_1, start_idx, end_idx):
     return label_np.tolist()
 
 
-def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir):
-    stacked_audio = torch.cat(audio_list, dim=0)
-    stacked_imu = torch.cat(imu_list, dim=0)
-    stacked_gas = torch.cat(gas_list, dim=0)
-    stacked_labels = torch.cat(labels_list, dim=0)
-    stacked_masks = torch.cat(masks_list, dim=0)
-    count = 0
-    length = 8
-    timestamp = int(time.time())  # 获取当前时间戳
-    for i in range(0, stacked_audio.shape[0], length):
-        subset_audio = stacked_audio[i: i + length]
-        subset_imu = stacked_imu[i: i + length]
-        subset_gas = stacked_gas[i: i + length]
-        subset_labels = stacked_labels[i: i + length]
-        subset_masks = stacked_masks[i: i + length]
-        sample_dict = {'audio': subset_audio, 'imu': subset_imu, 'gas': subset_gas, 'labels': subset_labels, 'masks': subset_masks}
-        # 保存字典到文件
-        output_file = f'Aspirat/data/{dump_dir}/sample_dict_{timestamp}_{count}.pt'
-        torch.save(sample_dict, output_file)
-        print(f"Shape:{stacked_audio.shape[0]} i={i} Dump {count} file={output_file}")
-        count += 1
+# def dump_data(audio_list, imu_list, gas_list, labels_list, masks_list, dump_dir):
+#     stacked_audio = torch.cat(audio_list, dim=0)
+#     stacked_imu = torch.cat(imu_list, dim=0)
+#     stacked_gas = torch.cat(gas_list, dim=0)
+#     stacked_labels = torch.cat(labels_list, dim=0)
+#     stacked_masks = torch.cat(masks_list, dim=0)
+#     count = 0
+#     length = 8
+#     timestamp = int(time.time())  # 获取当前时间戳
+#     for i in range(0, stacked_audio.shape[0], length):
+#         subset_audio = stacked_audio[i: i + length]
+#         subset_imu = stacked_imu[i: i + length]
+#         subset_gas = stacked_gas[i: i + length]
+#         subset_labels = stacked_labels[i: i + length]
+#         subset_masks = stacked_masks[i: i + length]
+#         sample_dict = {'audio': subset_audio, 'imu': subset_imu, 'gas': subset_gas, 'labels': subset_labels, 'masks': subset_masks}
+#         # 保存字典到文件
+#         output_file = f'Aspirat/data/{dump_dir}/sample_dict_{timestamp}_{count}.pt'
+#         torch.save(sample_dict, output_file)
+#         print(f"Shape:{stacked_audio.shape[0]} i={i} Dump {count} file={output_file}")
+#         count += 1
 
 
 def mix(signal):
@@ -438,8 +420,8 @@ def predict_calculate_overlap(model, root_path, data_list, pth_path, device):
     model.load_state_dict(torch.load(pth_path))
     model.eval()
     overlap_list = []
-    for index in range(len(data_list.iloc[:, 0])):
-        file_path = os.path.join(root_path, data_list.iloc[index, 0])
+    for file in data_list:
+        file_path = os.path.join(root_path, file)
         loaded_dict = torch.load(file_path)
         audio = loaded_dict['audio'].to(device)
         imu = loaded_dict['imu'].to(device)
@@ -690,39 +672,6 @@ def data_build(healty=False):
     print("Data Transform Finished!")
 
 
-# def post_process(input_data):
-#     data = input_data.tolist()
-#     upper_limit = 0.55
-#     lower_limit = 0.45
-#     swallow = False
-#     start_idx = 10
-#     over_lap = 5
-#     data_list = data[0][:10]
-#     for line in range(1, len(data)):
-#         for i in range(over_lap):
-#             data_list.append((data[line][i] + data[line - 1][start_idx + i]) / 2)
-#         for i in range(over_lap, start_idx):
-#             data_list.append(data[line][i])
-#     data_list.extend([value for value in data[-1][-5:]])
-#     forward_list = data_list
-#     # reverse_list = data_list
-#     for i in range(len(data_list)):
-#         if swallow:
-#             if data_list[i] >= lower_limit:
-#                 forward_list[i] = 1
-#             else:
-#                 forward_list[i] = 0
-#                 swallow = False
-#         else:
-#             if data_list[i] >= upper_limit:
-#                 forward_list[i] = 1
-#                 swallow = True
-#             else:
-#                 forward_list[i] = 0
-#     delete_short_event(forward_list)
-#     return rebuild_target(data_list)
-
-
 def rebuild_target(data_list):
     window_size = 15
     stride = 10
@@ -794,138 +743,138 @@ def plot_spectrogram(specgram, title=None, ylabel="freq_bin", ax=None, name="", 
     plt.close()
 
 
-def extract_feature(healthy=False):
-    with open('Aspirat/config.json', 'r') as json_file:
-        config_dict = json.load(json_file)
-    meta_csv = config_dict['patient_data_meta']
-    if healthy:
-        meta_csv = config_dict['healthy_data_meta']
-    data = pd.read_csv(meta_csv)
-    audio_sample_rate = config_dict['AudioSampleRate']
-    imu_sample_rate = config_dict['ImuSampleRate']
-    gas_sample_rate = config_dict['GasSampleRate']
-    features_list = []
-    for root_path in data.iloc[:, 0]:
-        audio_path = root_path + '/audio.wav'
-        imu_path = root_path + '/imu.csv'
-        gas_path = root_path + '/gas.csv'
-        Annotated_path = root_path + '/Annotated.json'
-        with open(Annotated_path, 'r') as json_file:
-            data = json.load(json_file)
-        label_list = data['label_list']
-        audio, sr = librosa.load(audio_path, sr=audio_sample_rate)
-        if audio.ndim > 1:
-            audio = np.mean(audio, axis=0)
-        imu = pd.read_csv(imu_path)
-        x_values = imu['X'].values
-        y_values = imu['Y'].values
-        z_values = imu['Z'].values
-        # 将 x、y、z 列的数值组合成一个三通道的数组
-        imu = np.column_stack((x_values, y_values, z_values))
-        gas = np.array(pd.read_csv(gas_path)['value'].values)
-        for count, label in enumerate(label_list):
-            start_value = label['start']
-            end_value = label['end']
-            audio_start = int(start_value * audio_sample_rate)
-            audio_end = int(end_value * audio_sample_rate)
-            imu_start = int(start_value * imu_sample_rate)
-            imu_end = int(end_value * imu_sample_rate)
-            gas_start = int(start_value * gas_sample_rate)
-            gas_end = int(end_value * gas_sample_rate)
-            sample_audio = audio[audio_start:audio_end]
-            sample_imu = imu[imu_start:imu_end, :]
-            sample_gas = gas[gas_start:gas_end]
-            features = extract_time_domain_features("audio", sample_audio)
-            features.update(extract_frequency_domain_features("audio", sample_audio, audio_sample_rate))
-            features.update(extract_time_domain_features("imu_x", sample_imu[:, 0]))
-            features.update(extract_frequency_domain_features("imu_x", sample_imu[:, 0], imu_sample_rate))
-            features.update(extract_time_domain_features("imu_y", sample_imu[:, 1]))
-            features.update(extract_frequency_domain_features("imu_y", sample_imu[:, 1], imu_sample_rate))
-            features.update(extract_time_domain_features("imu_z", sample_imu[:, 2]))
-            features.update(extract_frequency_domain_features("imu_z", sample_imu[:, 2], imu_sample_rate))
-            features.update(extract_time_domain_features("gas", sample_gas))
-            features.update(extract_frequency_domain_features("gas", sample_gas, gas_sample_rate))
-            features_list.append(features)
-        print(f"file {root_path} extract success.")
-    df = pd.DataFrame(features_list)
-    csv_file_path = 'patient_features.csv'
-    df.to_csv(csv_file_path, index=False)
-    print(f"保存的特征 DataFrame: healthy={healthy}")
+# def extract_feature(healthy=False):
+#     with open('Aspirat/config.json', 'r') as json_file:
+#         config_dict = json.load(json_file)
+#     meta_csv = config_dict['patient_data_meta']
+#     if healthy:
+#         meta_csv = config_dict['healthy_data_meta']
+#     data = pd.read_csv(meta_csv)
+#     audio_sample_rate = config_dict['AudioSampleRate']
+#     imu_sample_rate = config_dict['ImuSampleRate']
+#     gas_sample_rate = config_dict['GasSampleRate']
+#     features_list = []
+#     for root_path in data.iloc[:, 0]:
+#         audio_path = root_path + '/audio.wav'
+#         imu_path = root_path + '/imu.csv'
+#         gas_path = root_path + '/gas.csv'
+#         Annotated_path = root_path + '/Annotated.json'
+#         with open(Annotated_path, 'r') as json_file:
+#             data = json.load(json_file)
+#         label_list = data['label_list']
+#         audio, sr = librosa.load(audio_path, sr=audio_sample_rate)
+#         if audio.ndim > 1:
+#             audio = np.mean(audio, axis=0)
+#         imu = pd.read_csv(imu_path)
+#         x_values = imu['X'].values
+#         y_values = imu['Y'].values
+#         z_values = imu['Z'].values
+#         # 将 x、y、z 列的数值组合成一个三通道的数组
+#         imu = np.column_stack((x_values, y_values, z_values))
+#         gas = np.array(pd.read_csv(gas_path)['value'].values)
+#         for count, label in enumerate(label_list):
+#             start_value = label['start']
+#             end_value = label['end']
+#             audio_start = int(start_value * audio_sample_rate)
+#             audio_end = int(end_value * audio_sample_rate)
+#             imu_start = int(start_value * imu_sample_rate)
+#             imu_end = int(end_value * imu_sample_rate)
+#             gas_start = int(start_value * gas_sample_rate)
+#             gas_end = int(end_value * gas_sample_rate)
+#             sample_audio = audio[audio_start:audio_end]
+#             sample_imu = imu[imu_start:imu_end, :]
+#             sample_gas = gas[gas_start:gas_end]
+#             features = extract_time_domain_features("audio", sample_audio)
+#             features.update(extract_frequency_domain_features("audio", sample_audio, audio_sample_rate))
+#             features.update(extract_time_domain_features("imu_x", sample_imu[:, 0]))
+#             features.update(extract_frequency_domain_features("imu_x", sample_imu[:, 0], imu_sample_rate))
+#             features.update(extract_time_domain_features("imu_y", sample_imu[:, 1]))
+#             features.update(extract_frequency_domain_features("imu_y", sample_imu[:, 1], imu_sample_rate))
+#             features.update(extract_time_domain_features("imu_z", sample_imu[:, 2]))
+#             features.update(extract_frequency_domain_features("imu_z", sample_imu[:, 2], imu_sample_rate))
+#             features.update(extract_time_domain_features("gas", sample_gas))
+#             features.update(extract_frequency_domain_features("gas", sample_gas, gas_sample_rate))
+#             features_list.append(features)
+#         print(f"file {root_path} extract success.")
+#     df = pd.DataFrame(features_list)
+#     csv_file_path = 'patient_features.csv'
+#     df.to_csv(csv_file_path, index=False)
+#     print(f"保存的特征 DataFrame: healthy={healthy}")
 
 
-def extract_frequency_domain_features(feature_type, data, sampling_rate):
-    # 计算信号的功率谱密度
-    if data.shape[0] < 256:
-        frequencies, power_density = welch(data, fs=sampling_rate, nperseg=64)
-    else:
-        frequencies, power_density = welch(data, fs=sampling_rate)
+# def extract_frequency_domain_features(feature_type, data, sampling_rate):
+#     # 计算信号的功率谱密度
+#     if data.shape[0] < 256:
+#         frequencies, power_density = welch(data, fs=sampling_rate, nperseg=64)
+#     else:
+#         frequencies, power_density = welch(data, fs=sampling_rate)
 
-    # 找到功率谱密度最大值对应的频率（主频率）
-    dominant_frequency = frequencies[np.argmax(power_density)]
+#     # 找到功率谱密度最大值对应的频率（主频率）
+#     dominant_frequency = frequencies[np.argmax(power_density)]
 
-    # 计算频谱能量
-    spectral_energy = np.sum(power_density)
+#     # 计算频谱能量
+#     spectral_energy = np.sum(power_density)
 
-    # 计算频谱中心
-    spectral_centroid = np.sum(frequencies * power_density) / np.sum(power_density)
+#     # 计算频谱中心
+#     spectral_centroid = np.sum(frequencies * power_density) / np.sum(power_density)
 
-    # 计算频谱带宽
-    spectral_bandwidth = np.sqrt(np.sum((frequencies - spectral_centroid)**2 * power_density) / np.sum(power_density))
+#     # 计算频谱带宽
+#     spectral_bandwidth = np.sqrt(np.sum((frequencies - spectral_centroid)**2 * power_density) / np.sum(power_density))
 
-    # 计算频谱斜度
-    spectral_skewness = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**3 * power_density) / np.sum(power_density)
+#     # 计算频谱斜度
+#     spectral_skewness = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**3 * power_density) / np.sum(power_density)
 
-    # 计算频谱峰度
-    spectral_kurtosis = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**4 * power_density) / np.sum(power_density)
+#     # 计算频谱峰度
+#     spectral_kurtosis = np.sum(((frequencies - spectral_centroid) / spectral_bandwidth)**4 * power_density) / np.sum(power_density)
 
-    # 将功率谱密度数组转换成字符串
-    power_density_str = ','.join(map(str, power_density))
+#     # 将功率谱密度数组转换成字符串
+#     power_density_str = ','.join(map(str, power_density))
 
-    # 返回提取的频域特征
-    features = {
-        f'{feature_type}_dominant_frequency': dominant_frequency,
-        f'{feature_type}_spectral_energy': spectral_energy,
-        f'{feature_type}_spectral_centroid': spectral_centroid,
-        f'{feature_type}_spectral_bandwidth': spectral_bandwidth,
-        f'{feature_type}_spectral_skewness': spectral_skewness,
-        f'{feature_type}_spectral_kurtosis': spectral_kurtosis,
-        f'{feature_type}_power_density': power_density_str  # 可选：返回完整的功率谱密度数组
-    }
+#     # 返回提取的频域特征
+#     features = {
+#         f'{feature_type}_dominant_frequency': dominant_frequency,
+#         f'{feature_type}_spectral_energy': spectral_energy,
+#         f'{feature_type}_spectral_centroid': spectral_centroid,
+#         f'{feature_type}_spectral_bandwidth': spectral_bandwidth,
+#         f'{feature_type}_spectral_skewness': spectral_skewness,
+#         f'{feature_type}_spectral_kurtosis': spectral_kurtosis,
+#         f'{feature_type}_power_density': power_density_str  # 可选：返回完整的功率谱密度数组
+#     }
 
-    return features
+#     return features
 
 
-def extract_time_domain_features(feature_type, data):
-    # 计算均值、标准差、最大值、最小值
-    mean_value = np.mean(data)
-    std_deviation = np.std(data)
-    max_value = np.max(data)
-    min_value = np.min(data)
+# def extract_time_domain_features(feature_type, data):
+#     # 计算均值、标准差、最大值、最小值
+#     mean_value = np.mean(data)
+#     std_deviation = np.std(data)
+#     max_value = np.max(data)
+#     min_value = np.min(data)
 
-    # 计算峰值（绝对值的最大值）
-    peak_value = np.max(np.abs(data))
+#     # 计算峰值（绝对值的最大值）
+#     peak_value = np.max(np.abs(data))
 
-    # 计算偏度和峰度
-    data_skewness = skew(data)
-    data_kurtosis = kurtosis(data)
+#     # 计算偏度和峰度
+#     data_skewness = skew(data)
+#     data_kurtosis = kurtosis(data)
 
-    # 返回提取的时域特征
-    features = {
-        f'{feature_type}_mean': mean_value,
-        f'{feature_type}_std_deviation': std_deviation,
-        f'{feature_type}_max': max_value,
-        f'{feature_type}_min': min_value,
-        f'{feature_type}_peak': peak_value,
-        f'{feature_type}_skewness': data_skewness,
-        f'{feature_type}_kurtosis': data_kurtosis
-    }
+#     # 返回提取的时域特征
+#     features = {
+#         f'{feature_type}_mean': mean_value,
+#         f'{feature_type}_std_deviation': std_deviation,
+#         f'{feature_type}_max': max_value,
+#         f'{feature_type}_min': min_value,
+#         f'{feature_type}_peak': peak_value,
+#         f'{feature_type}_skewness': data_skewness,
+#         f'{feature_type}_kurtosis': data_kurtosis
+#     }
 
-    return features
+#     return features
 
 
 if __name__ == "__main__":
-    # count_patient("SegmentSwallow/patient")
-    count_swallow("../SegmentSwallow/patient")
+    count_patient("../SegmentSwallow/patient")
+    # count_swallow("../SegmentSwallow/patient")
     # extract_feature()
     # data_build(healty=True)
     # resort_meta()
